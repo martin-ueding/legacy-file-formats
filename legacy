@@ -80,32 +80,34 @@ def checkfolder(args, dirname, names):
     for name in names:
         for pattern in patterns:
             if name.lower().endswith("."+pattern):
-                # This is the standard export file name.
-                exportfile = dirname+"/"+name+"."+options.suffix
-
                 is_invalid = True
 
-                # Check whether the file has the same name, but just a export
-                # extension.  Rename the file then.
-                if not os.path.isfile(exportfile):
-                    alt_exportfile = dirname+"/"+os.path.splitext(name)[0]+"."+options.suffix
-                    if os.path.isfile(alt_exportfile):
-                        os.rename(alt_exportfile, exportfile)
+                # Check whether a file exist with one of the allowed suffixes.
+                for exportsuffix in patterns[pattern][1]:
+                    # This is the standard export file name.
+                    exportfile = dirname+"/"+name+"."+exportsuffix
 
-                # Check for the file again. This time, see whether its
-                # modification time is newer than the original, if that option
-                # is specified.
-                if os.path.isfile(exportfile):
-                    if options.time:
-                        origtime = os.path.getmtime(dirname+"/"+name)
-                        exporttime = os.path.getmtime(exportfile)
+                    # Check whether the file has the same name, but just a export
+                    # extension.  Rename the file then.
+                    if not os.path.isfile(exportfile):
+                        alt_exportfile = dirname+"/"+os.path.splitext(name)[0]+"."+exportsuffix
+                        if os.path.isfile(alt_exportfile):
+                            os.rename(alt_exportfile, exportfile)
 
-                        # If the export is newer than the origtime, the file is
-                        # valid.
-                        if exporttime > origtime:
+                    # Check for the file again. This time, see whether its
+                    # modification time is newer than the original, if that option
+                    # is specified.
+                    if os.path.isfile(exportfile):
+                        if options.time:
+                            origtime = os.path.getmtime(dirname+"/"+name)
+                            exporttime = os.path.getmtime(exportfile)
+
+                            # If the export is newer than the origtime, the file is
+                            # valid.
+                            if exporttime > origtime:
+                                is_invalid = False
+                        else:
                             is_invalid = False
-                    else:
-                        is_invalid = False
 
                 # Neither the regular nor the alternative export file exists,
                 # list this file.
