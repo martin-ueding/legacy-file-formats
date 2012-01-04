@@ -9,6 +9,7 @@ import sys
 
 type_drawing = ["pdf", "svg", "eps"]
 type_image = ["png", "tiff", "tif"]
+type_presentation = ["pdf"]
 type_tabular = ["pdf", "csv"]
 type_text = ["pdf", "txt", "rtf"]
 
@@ -17,23 +18,23 @@ type_text = ["pdf", "txt", "rtf"]
 # alternative file formats that satisfy the export as well.
 patterns = {
     "cdr": ("Corel Draw", type_drawing),
-    "doc": ("Microsoft Word", ["pdf", "odt", "txt"]),
-    "docx": ("Microsoft Word", ["pdf", "odt", "txt"]),
+    "doc": ("Microsoft Word", type_text),
+    "docx": ("Microsoft Word", type_text),
     "indd": ("Adobe InDesign", type_drawing),
-    "key": ("Apple Keynote", ["pdf", "odp"]),
+    "key": ("Apple Keynote", type_presentation),
     "mindnode": ("Mindnode Mindmap", ["pdf"]),
     "mw": ("Maple Worksheet", ["pdf"]),
     "nb": ("Mathematica Notebook", ["pdf"]),
     "numbers": ("Apple Numbers", type_tabular),
     "odg": ("OpenOffice Draw", type_drawing),
-    "odp": ("OpenOffice Impress", ["pdf"]),
+    "odp": ("OpenOffice Impress", type_presentation),
     "ods": ("OpenOffice Calc", type_tabular),
     "odt": ("OpenOffice Writer", type_text),
     "pages": ("Apple Pages", type_text),
-    "ppsx": ("Microsoft PowerPoint", ["pdf"]),
-    "ppt": ("Microsoft PowerPoint", ["pdf"]),
-    "ppts": ("Microsoft PowerPoint", ["pdf"]),
-    "pptx": ("Microsoft PowerPoint", ["pdf"]),
+    "ppsx": ("Microsoft PowerPoint", type_presentation),
+    "ppt": ("Microsoft PowerPoint", type_presentation),
+    "ppts": ("Microsoft PowerPoint", type_presentation),
+    "pptx": ("Microsoft PowerPoint", type_presentation),
     "psd": ("Adobe Photoshop", type_image),
     "rtfd": ("Rich Text Format Directory", type_text),
     "webarchive": ("Safari Web Archive", ["pdf", "html"]),
