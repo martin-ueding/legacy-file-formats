@@ -27,7 +27,7 @@ patterns = {
     "ppt": "Microsoft PowerPoint",
     "ppts": "Microsoft PowerPoint",
     "pptx": "Microsoft PowerPoint",
-    "rtfd": "Rich Text Format",
+    "rtfd": "Rich Text Format Directory",
     "xls": "Microsoft Excel",
     "xlsx": "Microsoft Excel",
     "xoj": "Xournal"
