@@ -82,28 +82,28 @@ def checkfolder(args, dirname, names):
         for pattern in patterns:
             if name.lower().endswith("."+pattern):
                 # This is the standard PDF file name.
-                pdffile = dirname+"/"+name+"."+options.suffix
+                exportfile = dirname+"/"+name+"."+options.suffix
 
                 is_invalid = True
 
                 # Check whether the file has the same name, but just a PDF
                 # extension.  Rename the file then.
-                if not os.path.isfile(pdffile):
-                    alt_pdffile = dirname+"/"+os.path.splitext(name)[0]+"."+options.suffix
-                    if os.path.isfile(alt_pdffile):
-                        os.rename(alt_pdffile, pdffile)
+                if not os.path.isfile(exportfile):
+                    alt_exportfile = dirname+"/"+os.path.splitext(name)[0]+"."+options.suffix
+                    if os.path.isfile(alt_exportfile):
+                        os.rename(alt_exportfile, exportfile)
 
                 # Check for the file again. This time, see whether its
                 # modification time is newer than the original, if that option
                 # is specified.
-                if os.path.isfile(pdffile):
+                if os.path.isfile(exportfile):
                     if options.time:
                         origtime = os.path.getmtime(dirname+"/"+name)
-                        pdftime = os.path.getmtime(pdffile)
+                        exporttime = os.path.getmtime(exportfile)
 
                         # If the PDF is newer than the origtime, the file is
                         # valid.
-                        if pdftime > origtime:
+                        if exporttime > origtime:
                             is_invalid = False
                     else:
                         is_invalid = False
