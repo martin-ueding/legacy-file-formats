@@ -7,6 +7,8 @@ import optparse
 import os
 import sys
 
+type_tabular = ["pdf", "csv"]
+
 # Dict of file extensions that should be checked. The full name is for the
 # stats output. The second element in the details tuple is a list of
 # alternative file formats that satisfy the export as well.
@@ -19,10 +21,10 @@ patterns = {
     "mindnode": ("Mindnode Mindmap", ["pdf"]),
     "mw": ("Maple Worksheet", ["pdf"]),
     "nb": ("Mathematica Notebook", ["pdf"]),
-    "numbers": ("Apple Numbers", ["pdf", "csv", "ods"]),
+    "numbers": ("Apple Numbers", type_tabular),
     "odg": ("OpenOffice Draw", ["pdf"]),
     "odp": ("OpenOffice Impress", ["pdf"]),
-    "ods": ("OpenOffice Calc", ["pdf", "csv"]),
+    "ods": ("OpenOffice Calc", type_tabular),
     "odt": ("OpenOffice Writer", ["pdf"]),
     "pages": ("Apple Pages", ["pdf"]),
     "ppsx": ("Microsoft PowerPoint", ["pdf"]),
@@ -33,8 +35,8 @@ patterns = {
     "rtfd": ("Rich Text Format Directory", ["pdf", "txt", "rtf"]),
     "webarchive": ("Safari Web Archive", ["pdf", "html"]),
     "xcf": ("GIMP Image", ["png", "tiff", "tif"]),
-    "xls": ("Microsoft Excel", ["pdf", "csv"]),
-    "xlsx": ("Microsoft Excel", ["pdf", "csv"]),
+    "xls": ("Microsoft Excel", type_tabular),
+    "xlsx": ("Microsoft Excel", type_tabular),
     "xoj": ("Xournal", ["pdf"])
 }
 
@@ -138,7 +140,7 @@ def show_formats():
     print "Suffix".ljust(10), "Name".ljust(30), "Export Suffixes"
     print "------".ljust(10), "----".ljust(30), "---------------"
 
-    for pattern in patterns:
+    for pattern in sorted(patterns):
         suffix = pattern
         name = patterns[pattern][0]
         exportsuffixes = patterns[pattern][1]
