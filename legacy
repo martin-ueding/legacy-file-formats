@@ -31,6 +31,7 @@ patterns = {
     "psd": ("Adobe Photoshop", ["png", "tiff", "tif"]),
     "rtfd": ("Rich Text Format Directory", ["pdf", "txt", "rtf"]),
     "webarchive": ("Safari Web Archive", ["pdf", "html"]),
+    "xcf": ("GIMP Image", ["png", "tiff", "tif"]),
     "xls": ("Microsoft Excel", ["pdf", "csv"]),
     "xlsx": ("Microsoft Excel", ["pdf", "csv"]),
     "xoj": ("Xournal", ["pdf"])
