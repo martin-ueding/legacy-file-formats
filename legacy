@@ -6,39 +6,39 @@
 import optparse
 import os
 
-# Dict of file extensions that should be checked. The full name is also there,
-# but currently not used.
+# Dict of file extensions that should be checked. The full name is for the
+# stats output. The second element in the details tuple is a list of
+# alternative file formats that satisfy the export as well.
 patterns = {
-    "cdr": ("Corel Draw",),
-    "doc": ("Microsoft Word",),
-    "docx": ("Microsoft Word",),
-    "indd": ("Adobe InDesign",),
-    "key": ("Apple Keynote",),
-    "mindnode": ("Mindnode Mindmap",),
-    "mw": ("Maple Worksheet",),
+    "cdr": ("Corel Draw", ["pdf", "svg"]),
+    "doc": ("Microsoft Word", ["pdf", "odt", "txt"]),
+    "docx": ("Microsoft Word", ["pdf", "odt", "txt"]),
+    "indd": ("Adobe InDesign", ["pdf"]),
+    "key": ("Apple Keynote",, ["pdf", "odp"]),
+    "mindnode": ("Mindnode Mindmap", ["pdf"]),
+    "mw": ("Maple Worksheet", ["pdf"]),
     "nb": ("Mathematica Notebook",),
-    "numbers": ("Apple Numbers",),
-    "odg": ("OpenOffice Draw",),
-    "odp": ("OpenOffice Impress",),
-    "ods": ("OpenOffice Calc",),
-    "odt": ("OpenOffice Writer",),
-    "pages": ("Apple Pages",),
-    "ppsx": ("Microsoft PowerPoint",),
-    "ppt": ("Microsoft PowerPoint",),
-    "ppts": ("Microsoft PowerPoint",),
-    "pptx": ("Microsoft PowerPoint",),
-    "psd": ("Adobe Photoshop",),
-    "rtfd": ("Rich Text Format Directory",),
-    "webarchive": ("Safari Web Archive",),
-    "xls": ("Microsoft Excel",),
-    "xlsx": ("Microsoft Excel",),
-    "xoj": ("Xournal",)
+    "numbers": ("Apple Numbers", ["pdf", "csv", "ods"]),
+    "odg": ("OpenOffice Draw", ["pdf"]),
+    "odp": ("OpenOffice Impress", ["pdf"]),
+    "ods": ("OpenOffice Calc", ["pdf", "csv"]),
+    "odt": ("OpenOffice Writer", ["pdf"]),
+    "pages": ("Apple Pages", ["pdf"]),
+    "ppsx": ("Microsoft PowerPoint", ["pdf"]),
+    "ppt": ("Microsoft PowerPoint", ["pdf"]),
+    "ppts": ("Microsoft PowerPoint", ["pdf"]),
+    "pptx": ("Microsoft PowerPoint", ["pdf"]),
+    "psd": ("Adobe Photoshop", ["png", "tiff", "tif"]),
+    "rtfd": ("Rich Text Format Directory", ["pdf", "txt", "rtf"]),
+    "webarchive": ("Safari Web Archive", ["pdf", "html"]),
+    "xls": ("Microsoft Excel", ["pdf", "csv"]),
+    "xlsx": ("Microsoft Excel", ["pdf", "csv"]),
+    "xoj": ("Xournal", ["pdf"])
 }
 
 
 def main():
-    parser = optparse.OptionParser(usage="legacy [paths...]", description="Checks for proprietary or legacy file formats that do not have a PDF exported.")
-    parser.add_option("--suffix", dest="suffix", default="pdf", help="Additional suffix to check for. [default %default]")
+    parser = optparse.OptionParser(usage="legacy [paths...]", description="Checks for proprietary or legacy file formats that do not have a PDF (or similarly standard) exported.")
     parser.add_option("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %default]")
     parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that PDF is newer than other file. [default %default]")
 
