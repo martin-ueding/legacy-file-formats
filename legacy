@@ -35,7 +35,7 @@ def main():
     options.suffix = options.suffix.lower()
 
     if len(args) == 0:
-        args.append(os.getcwd())
+        args.append(".")
 
     for arg in args:
         os.path.walk(arg, checkfolder, options)
