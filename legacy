@@ -5,6 +5,7 @@
 
 import optparse
 import os
+import sys
 
 # Dict of file extensions that should be checked. The full name is for the
 # stats output. The second element in the details tuple is a list of
@@ -42,9 +43,14 @@ def main():
     parser = optparse.OptionParser(usage="legacy [paths...]", description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")
     parser.add_option("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %default]")
     parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that export is newer than other file. [default %default]")
+    parser.add_option("--formats", dest="formats", action="store_true", default=False, help="Show known formats and exit.")
 
     (options, args) = parser.parse_args()
     del parser
+
+    if options.formats:
+        show_formats()
+        sys.exit(1)
 
     # If no directory was given on the command line, use the current working
     # directory.
@@ -128,6 +134,16 @@ def print_summary(counts):
     for key in sorted(counts):
         print str(counts[key]).rjust(4), key.ljust(10), patterns[key][0]
 
+def show_formats():
+    print "Suffix".ljust(10), "Name".ljust(30), "Export Suffixes"
+    print "------".ljust(10), "----".ljust(30), "---------------"
+
+    for pattern in patterns:
+        suffix = pattern
+        name = patterns[pattern][0]
+        exportsuffixes = patterns[pattern][1]
+
+        print suffix.ljust(10), name.ljust(30), ', '.join(sorted(exportsuffixes))
 
 if __name__ == "__main__":
 	main()
