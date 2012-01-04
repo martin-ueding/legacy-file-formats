@@ -26,7 +26,8 @@ patterns = {
     "pptx": "Microsoft PowerPoint",
     "rtfd": "Rich Text Format",
     "xls": "Microsoft Excel",
-    "xlsx": "Microsoft Excel"
+    "xlsx": "Microsoft Excel",
+    "xoj": "Xournal"
 }
 
 def main():
