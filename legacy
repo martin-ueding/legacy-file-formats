@@ -10,6 +10,7 @@ patterns = {
     "cdr": "Corel Draw",
     "doc": "Microsoft Word",
     "docx": "Microsoft Word",
+    "indd": "Adobe InDesign",
     "key": "Apple Keynote",
     "mindnode": "Mindnode Mindmap",
     "mw": "Maple Worksheet",
