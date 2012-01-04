@@ -35,7 +35,8 @@ patterns = {
 
 def main():
     parser = optparse.OptionParser(usage="legacy [paths...]", description="Checks for proprietary or legacy file formats that do not have a PDF exported.")
-    parser.add_option("--suffix", dest="suffix", default="pdf", help="Additional suffix to check for [default %default]")
+    parser.add_option("--suffix", dest="suffix", default="pdf", help="Additional suffix to check for. [default %default]")
+    parser.add_option("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %default]")
 
     (options, args) = parser.parse_args()
     del parser
@@ -46,6 +47,8 @@ def main():
     # directory.
     if len(args) == 0:
         args.append(".")
+
+    counts = {}
 
     # Iterate through all given folders.
     for arg in args:
