@@ -7,11 +7,11 @@ import optparse
 import os
 import sys
 
-type_drawing = ["pdf", "svg", "eps"]
-type_image = ["png", "tiff", "tif"]
+type_drawing = ["pdf", "svg", "eps", "ps"]
+type_image = ["png", "tiff", "tif", "bmp"]
 type_presentation = ["pdf"]
 type_tabular = ["pdf", "csv"]
-type_text = ["pdf", "txt", "rtf"]
+type_text = ["pdf", "txt", "rtf", "markdown", "tex", "md"]
 
 # Dict of file extensions that should be checked. The full name is for the
 # stats output. The second element in the details tuple is a list of
