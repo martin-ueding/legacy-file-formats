@@ -6,6 +6,15 @@
 import optparse
 import os
 
+patterns = {
+    "xls": "Microsoft Excel",
+    "key": "Apple Keynote",
+    "numbers": "Apple Numbers",
+    "pages": "Apple Pages",
+    "nb": "Mathematica Notebook",
+    "mw": "Maple Worksheet"
+}
+
 def main():
     parser = optparse.OptionParser(usage="legacy paths...", description="Checks for proprietary or legacy file formats that do not have a PDF exported.")
     parser.add_option("--suffix", dest="suffix", default="pdf", help="Additional suffix to check for [default %default]")
@@ -13,7 +22,17 @@ def main():
     (options, args) = parser.parse_args()
     del parser
 
-    os.path.walk
+    options.suffix = options.suffix.lower()
+
+    for arg in args:
+        os.path.walk(arg, checkfolder, None)
+
+def checkfolder(arg, dirname, names):
+    for name in names:
+        for pattern in patterns:
+            if name.lower.endswith("."+pattern):
+                if not os.path.isfile(dirname+"/"+name+"."+options.suffix):
+                    print dirname+"/"+name
 
 
 if __name__ == "__main__":
