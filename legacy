@@ -7,12 +7,22 @@ import optparse
 import os
 
 patterns = {
-    "xls": "Microsoft Excel",
+    "cdr": "Corel Draw",
+    "doc": "Microsoft Word",
+    "docx": "Microsoft Word",
     "key": "Apple Keynote",
+    "mindnode": "Mindnode Mindmap",
+    "mw": "Maple Worksheet",
+    "nb": "Mathematica Notebook",
     "numbers": "Apple Numbers",
     "pages": "Apple Pages",
-    "nb": "Mathematica Notebook",
-    "mw": "Maple Worksheet"
+    "ppsx": "Microsoft PowerPoint",
+    "ppt": "Microsoft PowerPoint",
+    "ppts": "Microsoft PowerPoint",
+    "pptx": "Microsoft PowerPoint",
+    "rtfd": "Rich Text Format",
+    "xls": "Microsoft Excel",
+    "xlsx": "Microsoft Excel"
 }
 
 def main():
