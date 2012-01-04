@@ -130,8 +130,6 @@ def checkfolder(args, dirname, names):
                         else:
                             is_invalid = False
 
-                # Neither the regular nor the alternative export file exists,
-                # list this file.
                 if is_invalid:
                     print dirname+"/"+name
 
