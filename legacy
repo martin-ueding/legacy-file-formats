@@ -7,37 +7,40 @@ import optparse
 import os
 import sys
 
+type_drawing = ["pdf", "svg", "eps"]
+type_image = ["png", "tiff", "tif"]
 type_tabular = ["pdf", "csv"]
+type_text = ["pdf", "txt", "rtf"]
 
 # Dict of file extensions that should be checked. The full name is for the
 # stats output. The second element in the details tuple is a list of
 # alternative file formats that satisfy the export as well.
 patterns = {
-    "cdr": ("Corel Draw", ["pdf", "svg"]),
+    "cdr": ("Corel Draw", type_drawing),
     "doc": ("Microsoft Word", ["pdf", "odt", "txt"]),
     "docx": ("Microsoft Word", ["pdf", "odt", "txt"]),
-    "indd": ("Adobe InDesign", ["pdf"]),
+    "indd": ("Adobe InDesign", type_drawing),
     "key": ("Apple Keynote", ["pdf", "odp"]),
     "mindnode": ("Mindnode Mindmap", ["pdf"]),
     "mw": ("Maple Worksheet", ["pdf"]),
     "nb": ("Mathematica Notebook", ["pdf"]),
     "numbers": ("Apple Numbers", type_tabular),
-    "odg": ("OpenOffice Draw", ["pdf"]),
+    "odg": ("OpenOffice Draw", type_drawing),
     "odp": ("OpenOffice Impress", ["pdf"]),
     "ods": ("OpenOffice Calc", type_tabular),
-    "odt": ("OpenOffice Writer", ["pdf"]),
-    "pages": ("Apple Pages", ["pdf"]),
+    "odt": ("OpenOffice Writer", type_text),
+    "pages": ("Apple Pages", type_text),
     "ppsx": ("Microsoft PowerPoint", ["pdf"]),
     "ppt": ("Microsoft PowerPoint", ["pdf"]),
     "ppts": ("Microsoft PowerPoint", ["pdf"]),
     "pptx": ("Microsoft PowerPoint", ["pdf"]),
-    "psd": ("Adobe Photoshop", ["png", "tiff", "tif"]),
-    "rtfd": ("Rich Text Format Directory", ["pdf", "txt", "rtf"]),
+    "psd": ("Adobe Photoshop", type_image),
+    "rtfd": ("Rich Text Format Directory", type_text),
     "webarchive": ("Safari Web Archive", ["pdf", "html"]),
-    "xcf": ("GIMP Image", ["png", "tiff", "tif"]),
+    "xcf": ("GIMP Image", type_image),
     "xls": ("Microsoft Excel", type_tabular),
     "xlsx": ("Microsoft Excel", type_tabular),
-    "xoj": ("Xournal", ["pdf"])
+    "xoj": ("Xournal", type_drawing)
 }
 
 
