@@ -53,17 +53,31 @@ def main():
             os.path.walk(arg, checkfolder, options)
 
 def checkfolder(options, dirname, names):
+    """
+    Checks a folder for files that lack an export.
+
+    In case `file.old` does not have a `file.old.pdf`, a `file.pdf` is checked
+    alternatively. It the latter is found, it is moved to `file.old.pdf` to
+    show that it is just an export of the original file, not a file on its own.
+    """
+
     names.sort()
 
+    # Iterate thorugh all the files and folders.
     for name in names:
         for pattern in patterns:
             if name.lower().endswith("."+pattern):
+                # This is the standard PDF file name.
                 pdffile = dirname+"/"+name+"."+options.suffix
+
                 if not os.path.isfile(pdffile):
                     # Check whether the file has the same name, just a PDF extension.
                     alt_pdffile = dirname+"/"+os.path.splitext(name)[0]+"."+options.suffix
                     if os.path.isfile(alt_pdffile):
                         os.rename(alt_pdffile, pdffile)
+                    
+                    # Neither the regular nor the alternative export file
+                    # exists, list this file.
                     else:
                         print dirname+"/"+name
 
