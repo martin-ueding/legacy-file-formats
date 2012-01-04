@@ -14,7 +14,7 @@ patterns = {
     "doc": ("Microsoft Word", ["pdf", "odt", "txt"]),
     "docx": ("Microsoft Word", ["pdf", "odt", "txt"]),
     "indd": ("Adobe InDesign", ["pdf"]),
-    "key": ("Apple Keynote",, ["pdf", "odp"]),
+    "key": ("Apple Keynote", ["pdf", "odp"]),
     "mindnode": ("Mindnode Mindmap", ["pdf"]),
     "mw": ("Maple Worksheet", ["pdf"]),
     "nb": ("Mathematica Notebook",),
