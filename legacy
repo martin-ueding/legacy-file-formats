@@ -40,7 +40,7 @@ patterns = {
 def main():
     parser = optparse.OptionParser(usage="legacy [paths...]", description="Checks for proprietary or legacy file formats that do not have a PDF (or similarly standard) exported.")
     parser.add_option("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %default]")
-    parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that PDF is newer than other file. [default %default]")
+    parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that export is newer than other file. [default %default]")
 
     (options, args) = parser.parse_args()
     del parser
@@ -81,12 +81,12 @@ def checkfolder(args, dirname, names):
     for name in names:
         for pattern in patterns:
             if name.lower().endswith("."+pattern):
-                # This is the standard PDF file name.
+                # This is the standard export file name.
                 exportfile = dirname+"/"+name+"."+options.suffix
 
                 is_invalid = True
 
-                # Check whether the file has the same name, but just a PDF
+                # Check whether the file has the same name, but just a export
                 # extension.  Rename the file then.
                 if not os.path.isfile(exportfile):
                     alt_exportfile = dirname+"/"+os.path.splitext(name)[0]+"."+options.suffix
@@ -101,7 +101,7 @@ def checkfolder(args, dirname, names):
                         origtime = os.path.getmtime(dirname+"/"+name)
                         exporttime = os.path.getmtime(exportfile)
 
-                        # If the PDF is newer than the origtime, the file is
+                        # If the export is newer than the origtime, the file is
                         # valid.
                         if exporttime > origtime:
                             is_invalid = False
