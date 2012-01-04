@@ -49,7 +49,8 @@ def main():
 
     # Iterate through all given folders.
     for arg in args:
-        os.path.walk(arg, checkfolder, options)
+        if os.path.isdir(arg):
+            os.path.walk(arg, checkfolder, options)
 
 def checkfolder(options, dirname, names):
     names.sort()
