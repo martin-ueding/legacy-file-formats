@@ -53,9 +53,14 @@ def main():
     # Iterate through all given folders.
     for arg in args:
         if os.path.isdir(arg):
-            os.path.walk(arg, checkfolder, options)
+            os.path.walk(arg, checkfolder, (options, counts))
 
-def checkfolder(options, dirname, names):
+    # Print the summary if desired.
+    if options.stat:
+        print
+        print_summary(counts)
+
+def checkfolder(args, dirname, names):
     """
     Checks a folder for files that lack an export.
 
@@ -63,6 +68,8 @@ def checkfolder(options, dirname, names):
     alternatively. It the latter is found, it is moved to `file.old.pdf` to
     show that it is just an export of the original file, not a file on its own.
     """
+
+    options, counts = args
 
     names.sort()
 
@@ -83,6 +90,15 @@ def checkfolder(options, dirname, names):
                     # exists, list this file.
                     else:
                         print dirname+"/"+name
+
+                        if not pattern in counts:
+                            counts[pattern] = 0
+
+                        counts[pattern] += 1
+
+def print_summary(counts):
+    for key in counts:
+        print str(counts[key]).rjust(4), key.ljust(10), patterns[key]
 
 
 if __name__ == "__main__":
