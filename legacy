@@ -57,7 +57,6 @@ def main():
 
     # Print the summary if desired.
     if options.stat:
-        print
         print_summary(counts)
 
 def checkfolder(args, dirname, names):
@@ -97,6 +96,10 @@ def checkfolder(args, dirname, names):
                         counts[pattern] += 1
 
 def print_summary(counts):
+    if len(counts) == 0:
+        return
+
+    print
     for key in counts:
         print str(counts[key]).rjust(4), key.ljust(10), patterns[key]
 
