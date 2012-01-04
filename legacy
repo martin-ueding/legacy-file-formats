@@ -25,12 +25,12 @@ def main():
     options.suffix = options.suffix.lower()
 
     for arg in args:
-        os.path.walk(arg, checkfolder, None)
+        os.path.walk(arg, checkfolder, options)
 
-def checkfolder(arg, dirname, names):
+def checkfolder(options, dirname, names):
     for name in names:
         for pattern in patterns:
-            if name.lower.endswith("."+pattern):
+            if name.lower().endswith("."+pattern):
                 if not os.path.isfile(dirname+"/"+name+"."+options.suffix):
                     print dirname+"/"+name
 
