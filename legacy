@@ -31,8 +31,15 @@ def checkfolder(options, dirname, names):
     for name in names:
         for pattern in patterns:
             if name.lower().endswith("."+pattern):
-                if not os.path.isfile(dirname+"/"+name+"."+options.suffix):
+                pdffile = dirname+"/"+name+"."+options.suffix
+                if not os.path.isfile(pdffile):
                     print dirname+"/"+name
+
+                    # Check whether the file has the same name, just a PDF extension.
+                    alt_pdffile = dirname+"/"+os.path.splitext(name)[0]+"."+options.suffix
+                    if os.path.isfile(alt_pdffile):
+                        os.rename(alt_pdffile, pdffile)
+                        print "Rename", alt_pdffile, pdffile
 
 
 if __name__ == "__main__":
