@@ -46,8 +46,6 @@ def main():
     (options, args) = parser.parse_args()
     del parser
 
-    options.suffix = options.suffix.lower()
-
     # If no directory was given on the command line, use the current working
     # directory.
     if len(args) == 0:
