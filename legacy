@@ -26,13 +26,16 @@ patterns = {
 }
 
 def main():
-    parser = optparse.OptionParser(usage="legacy paths...", description="Checks for proprietary or legacy file formats that do not have a PDF exported.")
+    parser = optparse.OptionParser(usage="legacy [paths...]", description="Checks for proprietary or legacy file formats that do not have a PDF exported.")
     parser.add_option("--suffix", dest="suffix", default="pdf", help="Additional suffix to check for [default %default]")
 
     (options, args) = parser.parse_args()
     del parser
 
     options.suffix = options.suffix.lower()
+
+    if len(args) == 0:
+        args.append(os.getcwd())
 
     for arg in args:
         os.path.walk(arg, checkfolder, options)
