@@ -9,30 +9,30 @@ import os
 # Dict of file extensions that should be checked. The full name is also there,
 # but currently not used.
 patterns = {
-    "cdr": "Corel Draw",
-    "doc": "Microsoft Word",
-    "docx": "Microsoft Word",
-    "indd": "Adobe InDesign",
-    "key": "Apple Keynote",
-    "mindnode": "Mindnode Mindmap",
-    "mw": "Maple Worksheet",
-    "nb": "Mathematica Notebook",
-    "numbers": "Apple Numbers",
-    "odg": "OpenOffice Draw",
-    "odp": "OpenOffice Impress",
-    "ods": "OpenOffice Calc",
-    "odt": "OpenOffice Writer",
-    "pages": "Apple Pages",
-    "ppsx": "Microsoft PowerPoint",
-    "ppt": "Microsoft PowerPoint",
-    "ppts": "Microsoft PowerPoint",
-    "pptx": "Microsoft PowerPoint",
-    "psd": "Adobe Photoshop",
-    "rtfd": "Rich Text Format Directory",
-    "webarchive": "Safari Web Archive",
-    "xls": "Microsoft Excel",
-    "xlsx": "Microsoft Excel",
-    "xoj": "Xournal"
+    "cdr": ("Corel Draw",),
+    "doc": ("Microsoft Word",),
+    "docx": ("Microsoft Word",),
+    "indd": ("Adobe InDesign",),
+    "key": ("Apple Keynote",),
+    "mindnode": ("Mindnode Mindmap",),
+    "mw": ("Maple Worksheet",),
+    "nb": ("Mathematica Notebook",),
+    "numbers": ("Apple Numbers",),
+    "odg": ("OpenOffice Draw",),
+    "odp": ("OpenOffice Impress",),
+    "ods": ("OpenOffice Calc",),
+    "odt": ("OpenOffice Writer",),
+    "pages": ("Apple Pages",),
+    "ppsx": ("Microsoft PowerPoint",),
+    "ppt": ("Microsoft PowerPoint",),
+    "ppts": ("Microsoft PowerPoint",),
+    "pptx": ("Microsoft PowerPoint",),
+    "psd": ("Adobe Photoshop",),
+    "rtfd": ("Rich Text Format Directory",),
+    "webarchive": ("Safari Web Archive",),
+    "xls": ("Microsoft Excel",),
+    "xlsx": ("Microsoft Excel",),
+    "xoj": ("Xournal",)
 }
 
 
@@ -125,7 +125,7 @@ def print_summary(counts):
 
     print
     for key in sorted(counts):
-        print str(counts[key]).rjust(4), key.ljust(10), patterns[key]
+        print str(counts[key]).rjust(4), key.ljust(10), patterns[key][0]
 
 
 if __name__ == "__main__":
