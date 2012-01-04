@@ -17,7 +17,7 @@ patterns = {
     "key": ("Apple Keynote", ["pdf", "odp"]),
     "mindnode": ("Mindnode Mindmap", ["pdf"]),
     "mw": ("Maple Worksheet", ["pdf"]),
-    "nb": ("Mathematica Notebook",),
+    "nb": ("Mathematica Notebook", ["pdf"]),
     "numbers": ("Apple Numbers", ["pdf", "csv", "ods"]),
     "odg": ("OpenOffice Draw", ["pdf"]),
     "odp": ("OpenOffice Impress", ["pdf"]),
