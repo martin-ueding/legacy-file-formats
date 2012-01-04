@@ -33,10 +33,12 @@ patterns = {
     "xoj": "Xournal"
 }
 
+
 def main():
     parser = optparse.OptionParser(usage="legacy [paths...]", description="Checks for proprietary or legacy file formats that do not have a PDF exported.")
     parser.add_option("--suffix", dest="suffix", default="pdf", help="Additional suffix to check for. [default %default]")
     parser.add_option("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %default]")
+    parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that PDF is newer than other file. [default %default]")
 
     (options, args) = parser.parse_args()
     del parser
@@ -59,6 +61,7 @@ def main():
     if options.stat:
         print_summary(counts)
 
+
 def checkfolder(args, dirname, names):
     """
     Checks a folder for files that lack an export.
@@ -79,21 +82,40 @@ def checkfolder(args, dirname, names):
                 # This is the standard PDF file name.
                 pdffile = dirname+"/"+name+"."+options.suffix
 
+                is_invalid = True
+
+                # Check whether the file has the same name, but just a PDF
+                # extension.  Rename the file then.
                 if not os.path.isfile(pdffile):
-                    # Check whether the file has the same name, just a PDF extension.
                     alt_pdffile = dirname+"/"+os.path.splitext(name)[0]+"."+options.suffix
                     if os.path.isfile(alt_pdffile):
                         os.rename(alt_pdffile, pdffile)
-                    
-                    # Neither the regular nor the alternative export file
-                    # exists, list this file.
+
+                # Check for the file again. This time, see whether its
+                # modification time is newer than the original, if that option
+                # is specified.
+                if os.path.isfile(pdffile):
+                    if options.time:
+                        origtime = os.path.getmtime(dirname+"/"+name)
+                        pdftime = os.path.getmtime(pdffile)
+
+                        # If the PDF is newer than the origtime, the file is
+                        # valid.
+                        if pdftime > origtime:
+                            is_invalid = False
                     else:
-                        print dirname+"/"+name
+                        is_invalid = False
 
-                        if not pattern in counts:
-                            counts[pattern] = 0
+                # Neither the regular nor the alternative export file exists,
+                # list this file.
+                if is_invalid:
+                    print dirname+"/"+name
 
-                        counts[pattern] += 1
+                    if not pattern in counts:
+                        counts[pattern] = 0
+
+                    counts[pattern] += 1
+
 
 def print_summary(counts):
     if len(counts) == 0:
