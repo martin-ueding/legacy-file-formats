@@ -6,6 +6,8 @@
 import optparse
 import os
 
+# Dict of file extensions that should be checked. The full name is also there,
+# but currently not used.
 patterns = {
     "cdr": "Corel Draw",
     "doc": "Microsoft Word",
@@ -40,9 +42,12 @@ def main():
 
     options.suffix = options.suffix.lower()
 
+    # If no directory was given on the command line, use the current working
+    # directory.
     if len(args) == 0:
         args.append(".")
 
+    # Iterate through all given folders.
     for arg in args:
         os.path.walk(arg, checkfolder, options)
 
