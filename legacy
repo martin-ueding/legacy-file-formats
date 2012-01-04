@@ -45,6 +45,8 @@ def main():
         os.path.walk(arg, checkfolder, options)
 
 def checkfolder(options, dirname, names):
+    names.sort()
+
     for name in names:
         for pattern in patterns:
             if name.lower().endswith("."+pattern):
