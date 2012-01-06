@@ -54,6 +54,29 @@ patterns = {
 }
 
 
+def print_table(headers, data):
+    headers_str = map(str, headers)
+    data_str = [map(str, line) for line in data]
+
+    cols_widths = [max(len(headers_str[i]), max([len(s) for s in data_str[i]])) for i in range(len(headers))]
+
+    for i in len(col_widths):
+        print headers_str[i].rjust(col_widths[i]),
+
+    print
+
+    for i in len(col_widths):
+        print '-'*len(headers_str[i]).rjust(col_widths[i]),
+
+    print
+
+    for row in data_str:
+        for i in len(col_widths):
+            print row[i].rjust(col_widths[i]),
+
+
+
+
 def main():
     parser = optparse.OptionParser(usage="legacy [paths...]", description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")
     parser.add_option("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %default]")
