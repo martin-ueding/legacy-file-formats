@@ -54,25 +54,28 @@ patterns = {
 }
 
 
-def print_table(headers, data):
+def print_table(headers, data, margin=2):
+    margin -= 1
     headers_str = map(str, headers)
     data_str = [map(str, line) for line in data]
 
-    cols_widths = [max(len(headers_str[i]), max([len(s) for s in data_str[i]])) for i in range(len(headers))]
+    col_widths = [max(len(headers_str[i]), max([len(row[i]) for row in data_str])) for i in range(len(headers))]
 
-    for i in len(col_widths):
-        print headers_str[i].rjust(col_widths[i]),
+    for i in range(len(col_widths)):
+        print headers_str[i].ljust(col_widths[i])+' '*margin,
 
     print
 
-    for i in len(col_widths):
-        print '-'*len(headers_str[i]).rjust(col_widths[i]),
+    for i in range(len(col_widths)):
+        print ('-'*len(headers_str[i])).ljust(col_widths[i])+' '*margin,
 
     print
 
     for row in data_str:
-        for i in len(col_widths):
-            print row[i].rjust(col_widths[i]),
+        for i in range(len(col_widths)):
+            print row[i].ljust(col_widths[i])+' '*margin,
+
+        print
 
 
 
@@ -171,15 +174,10 @@ def print_summary(counts):
         print str(counts[key]).rjust(4), key.ljust(10), patterns[key][0]
 
 def show_formats():
-    print "Suffix".ljust(10), "Name".ljust(30), "Export Suffixes"
-    print "------".ljust(10), "----".ljust(30), "---------------"
-
-    for pattern in sorted(patterns):
-        suffix = pattern
-        name = patterns[pattern][0]
-        exportsuffixes = patterns[pattern][1]
-
-        print suffix.ljust(10), name.ljust(30), ', '.join(sorted(exportsuffixes))
+    print_table(
+        ["Suffix", "Name", "Export Suffixes"],
+        [[pattern, patterns[pattern][0], ', '.join(sorted(patterns[pattern][1]))] for pattern in sorted(patterns)]
+    )
 
 if __name__ == "__main__":
 	main()
