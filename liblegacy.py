@@ -11,8 +11,10 @@ Contains functions to check folders, rename found files.
 
 __docformat__ = "javadoc en"
 
-from file_formats import patterns
+import file_formats
 import table
+
+patterns = file_formats.get_patterns()
 
 def checkfolder(args, dirname, names):
     """
