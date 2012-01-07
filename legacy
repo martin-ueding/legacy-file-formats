@@ -55,6 +55,13 @@ patterns = {
 
 
 def print_table(headers, data, margin=2):
+    """
+    Prints a table with header and data.
+
+    @param headers List of column headers.
+    @param data List of rows which are lists of columns.
+    @param margin Spacing between columns-
+    """
     margin -= 1
     headers_str = map(str, headers)
     data_str = [map(str, line) for line in data]
@@ -76,8 +83,6 @@ def print_table(headers, data, margin=2):
             print row[i].ljust(col_widths[i])+' '*margin,
 
         print
-
-
 
 
 def main():
@@ -118,6 +123,10 @@ def checkfolder(args, dirname, names):
     In case `file.old` does not have a `file.old.pdf`, a `file.pdf` is checked
     alternatively. It the latter is found, it is moved to `file.old.pdf` to
     show that it is just an export of the original file, not a file on its own.
+
+    @param args Arguments passed from `os.walk`.
+    @param dirname Name of the currently parsed directory.
+    @param names List of files and directories in the folder.
     """
 
     options, counts = args
@@ -167,6 +176,11 @@ def checkfolder(args, dirname, names):
 
 
 def print_summary(counts):
+    """
+    Prints a statistic.
+
+    @param counts Dict with `suffix: counts` pairs.
+    """
     if len(counts) == 0:
         return
 
@@ -174,11 +188,16 @@ def print_summary(counts):
     for key in sorted(counts):
         print str(counts[key]).rjust(4), key.ljust(10), patterns[key][0]
 
+
 def show_formats():
+    """
+    Prints a table of all supported formats.
+    """
     print_table(
         ["Suffix", "Name", "Export Suffixes"],
         [[pattern, patterns[pattern][0], ', '.join(sorted(patterns[pattern][1]))] for pattern in sorted(patterns)]
     )
+
 
 if __name__ == "__main__":
 	main()
