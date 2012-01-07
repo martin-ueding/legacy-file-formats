@@ -187,8 +187,11 @@ def print_summary(counts):
         return
 
     print
-    for key in sorted(counts):
-        print str(counts[key]).rjust(4), key.ljust(10), patterns[key][0]
+
+    print_table(
+        ["Count", "Suffix", "Name"],
+        [[str(counts[key]).rjust(5), key, patterns[key][0]] for key in sorted(counts)]
+    )
 
 
 def show_formats():
