@@ -3,13 +3,19 @@
 
 # Copyright (c) 2012 Martin Ueding <dev@martin-ueding.de>
 
+"""
+Finds files which might become unreadble in the future.
+
+This is the main script.
+"""
+
+__docformat__ = "javadoc en"
+
 import optparse
 import os
 import sys
 
 from liblegacy import *
-
-__docformat__ = "javadoc en"
 
 def main():
     parser = optparse.OptionParser(usage="%prog [paths...]", description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")

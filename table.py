@@ -3,6 +3,10 @@
 
 # Copyright (c) 2012 Martin Ueding <dev@martin-ueding.de>
 
+"""
+Pretty prints tables.
+"""
+
 __docformat__ = "javadoc en"
 
 def print_table(headers, data, margin=2):

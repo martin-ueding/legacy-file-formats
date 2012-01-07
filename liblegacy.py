@@ -3,6 +3,12 @@
 
 # Copyright (c) 2012 Martin Ueding <dev@martin-ueding.de>
 
+"""
+Library for the legacy script.
+
+Contains functions to check folders, rename found files.
+"""
+
 __docformat__ = "javadoc en"
 
 from file_formats import patterns
