@@ -11,6 +11,8 @@ Contains functions to check folders, rename found files.
 
 __docformat__ = "javadoc en"
 
+import os
+
 import file_formats
 import table
 
