@@ -130,7 +130,6 @@ def checkfolder(args, dirname, names):
     @param dirname Name of the currently parsed directory.
     @param names List of files and directories in the folder.
     """
-
     options, counts = args
 
     names.sort()
