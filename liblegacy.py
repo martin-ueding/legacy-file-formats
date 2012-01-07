@@ -35,8 +35,8 @@ def checkfolder(args, dirname, names):
                     # This is the standard export file name.
                     exportfile = dirname+"/"+name+"."+exportsuffix
 
-                    # Check whether the file has the same name, but just a export
-                    # extension.  Rename the file then.
+                    # Check whether the file has the same name, but just a
+                    # export extension.  Rename the file then.
                     if not os.path.isfile(exportfile):
                         alt_exportfile = dirname+"/"+os.path.splitext(name)[0]+"."+exportsuffix
                         if os.path.isfile(alt_exportfile):
@@ -50,15 +50,15 @@ def checkfolder(args, dirname, names):
                                     print "Would rename", alt_exportfile, exportfile
 
                     # Check for the file again. This time, see whether its
-                    # modification time is newer than the original, if that option
-                    # is specified.
+                    # modification time is newer than the original, if that
+                    # option is specified.
                     if os.path.isfile(exportfile):
                         if options.time:
                             origtime = os.path.getmtime(dirname+"/"+name)
                             exporttime = os.path.getmtime(exportfile)
 
-                            # If the export is newer than the origtime, the file is
-                            # valid.
+                            # If the export is newer than the origtime, the
+                            # file is valid.
                             if exporttime > origtime:
                                 is_invalid = False
                         else:
