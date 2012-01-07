@@ -52,7 +52,6 @@ patterns = {
     "xls": ("Microsoft Excel", type_tabular),
     "xlsx": ("Microsoft Excel", type_tabular),
     "xoj": ("Xournal", type_drawing),
-    "xpm": ("XPM Picture", type_picture),
 }
 
 
