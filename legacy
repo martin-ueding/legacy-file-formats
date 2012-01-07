@@ -92,6 +92,7 @@ def main():
     parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that export is newer than other file. [default %default]")
     parser.add_option("--formats", dest="formats", action="store_true", default=False, help="Show known formats and exit.")
     parser.add_option("--rename", dest="rename", action="store_true", default=False, help="Rename file.pdf to file.old.pdf [default %default].")
+    parser.add_option("-v", dest="verbose", action="store_true", default=False, help="Show renames (or would be renames). [default %default].")
 
     (options, args) = parser.parse_args()
     del parser
@@ -148,8 +149,15 @@ def checkfolder(args, dirname, names):
                     # extension.  Rename the file then.
                     if not os.path.isfile(exportfile):
                         alt_exportfile = dirname+"/"+os.path.splitext(name)[0]+"."+exportsuffix
-                        if os.path.isfile(alt_exportfile) and options.rename:
-                            os.rename(alt_exportfile, exportfile)
+                        if os.path.isfile(alt_exportfile):
+                            if options.rename:
+                                os.rename(alt_exportfile, exportfile)
+                                if options.verbose:
+                                    print "Renaming", alt_exportfile, exportfile
+
+                            else:
+                                if options.verbose:
+                                    print "Would rename", alt_exportfile, exportfile
 
                     # Check for the file again. This time, see whether its
                     # modification time is newer than the original, if that option
