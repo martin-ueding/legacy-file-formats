@@ -16,7 +16,7 @@ import os
 import file_formats
 import table
 
-patterns = file_formats.get_patterns()
+_patterns = file_formats.get_patterns()
 
 def checkfolder(args, dirname, names):
     """
@@ -32,12 +32,12 @@ def checkfolder(args, dirname, names):
 
     # Iterate thorugh all the files and folders.
     for name in names:
-        for pattern in patterns:
+        for pattern in _patterns:
             if name.lower().endswith("."+pattern):
-                check_file(name, options, counts, dirname, pattern)
+                _check_file(name, options, counts, dirname, pattern)
 
 
-def check_file(name, options, counts, dirname, pattern):
+def _check_file(name, options, counts, dirname, pattern):
     """
     Checks a file for export file(s).
 
@@ -54,26 +54,26 @@ def check_file(name, options, counts, dirname, pattern):
     is_invalid = True
 
     # Check whether a file exist with one of the allowed suffixes.
-    for exportsuffix in patterns[pattern][1]:
+    for exportsuffix in _patterns[pattern][1]:
         # This is the standard export file name.
         exportfile = dirname+"/"+name+"."+exportsuffix
 
-        check_rename(dirname, name, exportfile, exportsuffix, options)
+        _check_rename(dirname, name, exportfile, exportsuffix, options)
 
         # Check for the file again. This time, see whether its modification
         # time is newer than the original, if that option is specified.
         if os.path.isfile(exportfile):
             if options.time:
-                if not check_time(dirname+"/"+name, exportfile):
+                if not _check_time(dirname+"/"+name, exportfile):
                     is_invalid = False
             else:
                 is_invalid = False
 
     if is_invalid:
-        mark_invalid(dirname, name, pattern, counts)
+        _mark_invalid(dirname, name, pattern, counts)
 
 
-def check_time(origfile, exportfile):
+def _check_time(origfile, exportfile):
     """
     Check whether `origfile` is older than `exportfile`.
 
@@ -89,7 +89,7 @@ def check_time(origfile, exportfile):
     return exporttime > origtime
 
 
-def check_rename(dirname, name, exportfile, exportsuffix, options):
+def _check_rename(dirname, name, exportfile, exportsuffix, options):
     """
     Check whether the file has the same name, but just a export extension.
 
@@ -114,7 +114,7 @@ def check_rename(dirname, name, exportfile, exportsuffix, options):
                     print "Would rename", alt_exportfile, exportfile
 
 
-def mark_invalid(dirname, name, pattern, counts):
+def _mark_invalid(dirname, name, pattern, counts):
     """
     Marks a file as having no export.
 
@@ -144,7 +144,7 @@ def print_summary(counts):
 
     table.print_table(
         ["Count", "Suffix", "Name"],
-        [[str(counts[key]).rjust(5), key, patterns[key][0]] for key in sorted(counts)]
+        [[str(counts[key]).rjust(5), key, _patterns[key][0]] for key in sorted(counts)]
     )
 
 
@@ -154,5 +154,5 @@ def show_formats():
     """
     table.print_table(
         ["Suffix", "Name", "Export Suffixes"],
-        [[pattern, patterns[pattern][0], ', '.join(sorted(patterns[pattern][1]))] for pattern in sorted(patterns)]
+        [[pattern, _patterns[pattern][0], ', '.join(sorted(_patterns[pattern][1]))] for pattern in sorted(_patterns)]
     )
