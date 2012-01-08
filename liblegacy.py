@@ -22,10 +22,6 @@ def checkfolder(args, dirname, names):
     """
     Checks a folder for files that lack an export.
 
-    In case `file.old` does not have a `file.old.pdf`, a `file.pdf` is checked
-    alternatively. It the latter is found, it is moved to `file.old.pdf` to
-    show that it is just an export of the original file, not a file on its own.
-
     @param args Arguments passed from `os.walk`.
     @param dirname Name of the currently parsed directory.
     @param names List of files and directories in the folder.
@@ -38,30 +34,53 @@ def checkfolder(args, dirname, names):
     for name in names:
         for pattern in patterns:
             if name.lower().endswith("."+pattern):
-                is_invalid = True
+                check_file(name, options, counts, dirname, pattern)
 
-                # Check whether a file exist with one of the allowed suffixes.
-                for exportsuffix in patterns[pattern][1]:
-                    # This is the standard export file name.
-                    exportfile = dirname+"/"+name+"."+exportsuffix
 
-                    check_rename(dirname, name, exportfile, exportsuffix, options)
+def check_file(name, options, counts, dirname, pattern):
+    """
+    Checks a file for export file(s).
 
-                    # Check for the file again. This time, see whether its
-                    # modification time is newer than the original, if that
-                    # option is specified.
-                    if os.path.isfile(exportfile):
-                        if options.time:
-                            if not check_time(dirname+"/"+name, exportfile):
-                                is_invalid = False
-                        else:
-                            is_invalid = False
+    In case `file.old` does not have a `file.old.pdf`, a `file.pdf` is checked
+    alternatively. It the latter is found, it is moved to `file.old.pdf` to
+    show that it is just an export of the original file, not a file on its own.
 
-                if is_invalid:
-                    mark_invalid(dirname, name, pattern, counts)
+    @param name Name of the file.
+    @param dirname Directory of the file.
+    @param options Program options.
+    @param counts Suffix statistics.
+    @param pattern Suffix of this file.
+    """
+    is_invalid = True
+
+    # Check whether a file exist with one of the allowed suffixes.
+    for exportsuffix in patterns[pattern][1]:
+        # This is the standard export file name.
+        exportfile = dirname+"/"+name+"."+exportsuffix
+
+        check_rename(dirname, name, exportfile, exportsuffix, options)
+
+        # Check for the file again. This time, see whether its modification
+        # time is newer than the original, if that option is specified.
+        if os.path.isfile(exportfile):
+            if options.time:
+                if not check_time(dirname+"/"+name, exportfile):
+                    is_invalid = False
+            else:
+                is_invalid = False
+
+    if is_invalid:
+        mark_invalid(dirname, name, pattern, counts)
 
 
 def check_time(origfile, exportfile):
+    """
+    Check whether `origfile` is older than `exportfile`.
+
+    @param origfile Path to first file.
+    @param exportfile Path to second file.
+    @return Whether first file is older than second.
+    """
     origtime = os.path.getmtime(origfile)
     exporttime = os.path.getmtime(exportfile)
 
@@ -75,6 +94,12 @@ def check_rename(dirname, name, exportfile, exportsuffix, options):
     Check whether the file has the same name, but just a export extension.
 
     Rename the file then.
+
+    @param dirname Directory of the original file.
+    @param name Name of the original file.
+    @param exportfile Expected exportfile.
+    @param exportsuffix Expected suffix of the export file.
+    @param options General program options.
     """
     if not os.path.isfile(exportfile):
         alt_exportfile = dirname+"/"+os.path.splitext(name)[0]+"."+exportsuffix
@@ -90,6 +115,14 @@ def check_rename(dirname, name, exportfile, exportsuffix, options):
 
 
 def mark_invalid(dirname, name, pattern, counts):
+    """
+    Marks a file as having no export.
+
+    @param dirname Directory of the file.
+    @param name Name of the file.
+    @param pattern Suffix of the original file.
+    @param counts Dict with suffix counts.
+    """
     print dirname+"/"+name
 
     if not pattern in counts:
