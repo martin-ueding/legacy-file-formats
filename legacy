@@ -15,7 +15,7 @@ import optparse
 import os
 import sys
 
-from liblegacy import *
+import liblegacy
 
 def main():
     parser = optparse.OptionParser(usage="%prog [paths...]", description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")
@@ -29,7 +29,7 @@ def main():
     del parser
 
     if options.formats:
-        show_formats()
+        liblegacy.show_formats()
         sys.exit(1)
 
     # If no directory was given on the command line, use the current working
@@ -42,11 +42,11 @@ def main():
     # Iterate through all given folders.
     for arg in args:
         if os.path.isdir(arg):
-            os.path.walk(arg, checkfolder, (options, counts))
+            os.path.walk(arg, liblegacy.checkfolder, (options, counts))
 
     # Print the summary if desired.
     if options.stat:
-        print_summary(counts)
+        liblegacy.print_summary(counts)
 
 
 if __name__ == "__main__":
