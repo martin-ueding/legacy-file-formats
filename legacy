@@ -17,7 +17,12 @@ import sys
 
 import liblegacy
 
-def main():
+def _parse_args():
+    """
+    Parses command line arguments.
+
+    @return Tuple with options and arguments.
+    """
     parser = optparse.OptionParser(usage="%prog [paths...]", description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")
     parser.add_option("--formats", dest="formats", action="store_true", default=False, help="Show known formats and exit.")
     parser.add_option("--rename", dest="rename", action="store_true", default=False, help="Rename file.pdf to file.old.pdf [default %default].")
@@ -25,8 +30,10 @@ def main():
     parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that export is newer than other file. [default %default]")
     parser.add_option("-v", dest="verbose", action="store_true", default=False, help="Show renames (or would be renames). [default %default].")
 
-    (options, args) = parser.parse_args()
-    del parser
+    return parser.parse_args()
+
+def main():
+    (options, args) = _parse_args()
 
     if options.formats:
         liblegacy.show_formats()
