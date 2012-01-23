@@ -31,7 +31,6 @@ not, the file will be listed.
 
 0
   ~ No errors.
-
 1
   ~ No configuration file could be found.
 
