@@ -1,4 +1,8 @@
 suffixes:
+  bzr:
+    name: Bazaar VCS
+    export_suffixes:
+    - git
   cdr:
     name: Corel Draw
     export_suffixes:
