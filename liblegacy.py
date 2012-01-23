@@ -54,20 +54,21 @@ def _check_file(name, options, counts, dirname, pattern):
     is_invalid = True
 
     # Check whether a file exist with one of the allowed suffixes.
-    for exportsuffix in _patterns[pattern]["export_suffixes"]:
-        # This is the standard export file name.
-        exportfile = dirname+"/"+name+"."+exportsuffix
+    if "export_suffixes" in _patterns[pattern]:
+        for exportsuffix in _patterns[pattern]["export_suffixes"]:
+            # This is the standard export file name.
+            exportfile = dirname+"/"+name+"."+exportsuffix
 
-        _check_rename(dirname, name, exportfile, exportsuffix, options)
+            _check_rename(dirname, name, exportfile, exportsuffix, options)
 
-        # Check for the file again. This time, see whether its modification
-        # time is newer than the original, if that option is specified.
-        if os.path.isfile(exportfile):
-            if options.time:
-                if not _check_time(dirname+"/"+name, exportfile):
+            # Check for the file again. This time, see whether its modification
+            # time is newer than the original, if that option is specified.
+            if os.path.isfile(exportfile):
+                if options.time:
+                    if not _check_time(dirname+"/"+name, exportfile):
+                        is_invalid = False
+                else:
                     is_invalid = False
-            else:
-                is_invalid = False
 
     if is_invalid:
         _mark_invalid(dirname, name, pattern, counts)
