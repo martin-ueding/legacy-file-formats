@@ -152,7 +152,26 @@ def show_formats():
     """
     Prints a table of all supported formats.
     """
+    table_data = []
+    for pattern in sorted(_patterns):
+        cur_pattern = _patterns[pattern]
+        table_row = []
+
+        table_row.append(pattern)
+
+        if "name" in cur_pattern:
+            table_row.append(cur_pattern["name"])
+        else:
+            table_row.append("")
+
+        if "export_suffixes" in cur_pattern:
+            table_row.append(', '.join(sorted(cur_pattern["export_suffixes"])))
+        else:
+            table_row.append("")
+
+        table_data.append(table_row)
+
     table.print_table(
         ["Suffix", "Name", "Export Suffixes"],
-        [[pattern, _patterns[pattern]["name"], ', '.join(sorted(_patterns[pattern]["export_suffixes"]))] for pattern in sorted(_patterns)]
+        table_data
     )
