@@ -10,6 +10,8 @@ This module contains the file type definitions.
 __docformat__ = "javadoc en"
 
 
+import os
+import sys
 import yaml
 
 
@@ -22,8 +24,14 @@ def get_patterns():
 
     @return Pattern dict.
     """
+    filename = os.path.expanduser("~/.legacy.yaml")
+    if not os.path.isfile(filename):
+        print "Could not find the configuration file."
+        print "Please create a YAML file",filename
+        print "See `man legacy` for more information"
+        sys.exit(1)
 
-    f = file("default.yaml")
+    f = file(filename)
     imported = yaml.load(f)
 
     patterns = imported["suffixes"]
