@@ -12,6 +12,7 @@ Contains functions to check folders, rename found files.
 __docformat__ = "javadoc en"
 
 import os
+import subprocess
 
 import file_formats
 import table
@@ -172,8 +173,11 @@ def show_formats():
 
         table_data.append(table_row)
 
-    # TODO Use a pager for this.
+    proc = subprocess.Popen(["less", "-FRSX"], stdin=subprocess.PIPE)
     table.print_table(
         ["Suffix", "Name", "Export Suffixes"],
-        table_data
+        table_data,
+        outfile = proc.stdin
     )
+    proc.stdin.close()
+    proc.communicate()
