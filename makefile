@@ -19,3 +19,6 @@ html/index.html: legacy $(pythonfiles)
 clean:
 	$(RM) *.pyc
 	$(RM) -r html
+	$(RM) legacy.1
+	$(RM) legacy.1.html
+	$(RM) legacyc
