@@ -13,7 +13,7 @@ def get_patterns():
     """
     Get dict with patterns.
 
-    The pattern dict is build up like this:
+    The pattern dict is build up like this
         {suffix: (Long Name, [export suffix, …])}
 
     @return Pattern dict.
