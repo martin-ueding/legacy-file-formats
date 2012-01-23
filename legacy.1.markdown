@@ -69,7 +69,6 @@ You can set which file types should be looked for.
 
 The configuration file is in the YAML format.
 
-# NOTES
 # BUGS
 
 Please report bugs in English or German to Martin Ueding <dev@martin-ueding.de>.
@@ -78,5 +77,3 @@ Please report bugs in English or German to Martin Ueding <dev@martin-ueding.de>.
 
 `legacy`
   ~ Search your current working directory for legacy files.
-
-# SEE ALSO
