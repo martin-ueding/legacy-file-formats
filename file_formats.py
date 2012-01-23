@@ -20,7 +20,10 @@ def get_patterns():
     Get dict with patterns.
 
     The pattern dict is build up like this
-        {suffix: (Long Name, [export suffix, …])}
+    {"suffix":
+        {"name": Long Name, "export_suffixes": [export suffix, …]}
+        ...
+    }
 
     @return Pattern dict.
     """
