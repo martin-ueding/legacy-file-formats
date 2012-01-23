@@ -33,9 +33,9 @@ def checkfolder(args, dirname, names):
 
     # Iterate thorugh all the files and folders.
     for name in names:
-        for pattern in _patterns:
-            if name.lower().endswith("."+pattern):
-                _check_file(name, options, counts, dirname, pattern)
+        suffix = name.lower().split('.')[-1]
+        if suffix in _patterns:
+            _check_file(name, options, counts, dirname, suffix)
 
 
 def _check_file(name, options, counts, dirname, pattern):
