@@ -1,88 +1,174 @@
 suffixes:
   cdr:
     name: Corel Draw
-    export_suffixes: [pdf, svg, eps, ps]
+    export_suffixes:
+    - eps
+    - pdf
+    - ps
+    - svg
   dmg:
     name: Apple Disk Image
-    export_suffixes: [iso, zip]
+    export_suffixes:
+    - iso
+    - zip
   doc:
     name: Microsoft Word
-    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+    export_suffixes:
+    - markdown
+    - md
+    - pdf
+    - rtf
+    - tex
+    - txt
   docx:
     name: Microsoft Word
-    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+    export_suffixes:
+    - markdown
+    - md
+    - pdf
+    - rtf
+    - tex
+    - txt
   flv:
     name: Flash Video
-    export_suffixes: [ogv, avi, mpg, mp4]
+    export_suffixes:
+    - avi
+    - mp4
+    - mpg
+    - ogv
   indd:
     name: Adobe InDesign
-    export_suffixes: [pdf, svg, eps, ps]
+    export_suffixes:
+    - eps
+    - pdf
+    - ps
+    - svg
   key:
     name: Apple Keynote
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   mindnode:
     name: Mindnode Mindmap
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   mw:
     name: Maple Worksheet
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   nb:
     name: Mathematica Notebook
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   numbers:
     name: Apple Numbers
-    export_suffixes: [pdf, csv]
+    export_suffixes:
+    - csv
+    - pdf
   odg:
     name: OpenOffice Draw
-    export_suffixes: [pdf, svg, eps, ps]
+    export_suffixes:
+    - eps
+    - pdf
+    - ps
+    - svg
   odp:
     name: OpenOffice Impress
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   ods:
     name: OpenOffice Calc
-    export_suffixes: [pdf, csv]
+    export_suffixes:
+    - csv
+    - pdf
   odt:
     name: OpenOffice Writer
-    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+    export_suffixes:
+    - markdown
+    - md
+    - pdf
+    - rtf
+    - tex
+    - txt
   pages:
     name: Apple Pages
-    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+    export_suffixes:
+    - markdown
+    - md
+    - pdf
+    - rtf
+    - tex
+    - txt
   ppsx:
     name: Microsoft PowerPoint
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   ppt:
     name: Microsoft PowerPoint
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   ppts:
     name: Microsoft PowerPoint
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   pptx:
     name: Microsoft PowerPoint
-    export_suffixes: [pdf]
+    export_suffixes:
+    - pdf
   psd:
     name: Adobe Photoshop
-    export_suffixes: [png, tiff, tif, bmp]
+    export_suffixes:
+    - bmp
+    - png
+    - tif
+    - tiff
   rtfd:
     name: Rich Text Format Directory
-    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+    export_suffixes:
+    - markdown
+    - md
+    - pdf
+    - rtf
+    - tex
+    - txt
   webarchive:
     name: Safari Web Archive
-    export_suffixes: [pdf, html]
+    export_suffixes:
+    - html
+    - pdf
   wma:
     name: Windows Media Audio
-    export_suffixes: [mp3, ogg, flac]
+    export_suffixes:
+    - flac
+    - mp3
+    - ogg
   wmv:
     name: Windows Media Video
-    export_suffixes: [ogv, avi, mpg, mp4]
+    export_suffixes:
+    - avi
+    - mp4
+    - mpg
+    - ogv
   xcf:
     name: GIMP Picture
-    export_suffixes: [png, tiff, tif, bmp]
+    export_suffixes:
+    - bmp
+    - png
+    - tif
+    - tiff
   xls:
     name: Microsoft Excel
-    export_suffixes: [pdf, csv]
+    export_suffixes:
+    - csv
+    - pdf
   xlsx:
     name: Microsoft Excel
-    export_suffixes: [pdf, csv]
+    export_suffixes:
+    - csv
+    - pdf
   xoj:
     name: Xournal
-    export_suffixes: [pdf, svg, eps, ps]
+    export_suffixes:
+    - eps
+    - pdf
+    - ps
+    - svg
