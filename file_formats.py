@@ -9,11 +9,9 @@ This module contains the file type definitions.
 
 __docformat__ = "javadoc en"
 
-
 import os
 import sys
 import yaml
-
 
 def get_patterns():
     """
