@@ -145,7 +145,7 @@ def print_summary(counts):
 
     table.print_table(
         ["Count", "Suffix", "Name"],
-        [[str(counts[key]).rjust(5), key, _patterns[key][0]] for key in sorted(counts)]
+        [[str(counts[key]).rjust(5), key, _patterns[key]["name"]] for key in sorted(counts)]
     )
 
 
