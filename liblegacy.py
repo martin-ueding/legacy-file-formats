@@ -54,7 +54,7 @@ def _check_file(name, options, counts, dirname, pattern):
     is_invalid = True
 
     # Check whether a file exist with one of the allowed suffixes.
-    for exportsuffix in _patterns[pattern][1]:
+    for exportsuffix in _patterns[pattern]["export_suffixes"]:
         # This is the standard export file name.
         exportfile = dirname+"/"+name+"."+exportsuffix
 
@@ -154,5 +154,5 @@ def show_formats():
     """
     table.print_table(
         ["Suffix", "Name", "Export Suffixes"],
-        [[pattern, _patterns[pattern][0], ', '.join(sorted(_patterns[pattern][1]))] for pattern in sorted(_patterns)]
+        [[pattern, _patterns[pattern]["name"], ', '.join(sorted(_patterns[pattern]["export_suffixes"]))] for pattern in sorted(_patterns)]
     )

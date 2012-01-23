@@ -1,0 +1,88 @@
+suffixes:
+  cdr:
+    name: Corel Draw
+    export_suffixes: [pdf, svg, eps, ps]
+  dmg:
+    name: Apple Disk Image
+    export_suffixes: [iso, zip]
+  doc:
+    name: Microsoft Word
+    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+  docx:
+    name: Microsoft Word
+    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+  flv:
+    name: Flash Video
+    export_suffixes: [ogv, avi, mpg, mp4]
+  indd:
+    name: Adobe InDesign
+    export_suffixes: [pdf, svg, eps, ps]
+  key:
+    name: Apple Keynote
+    export_suffixes: [pdf]
+  mindnode:
+    name: Mindnode Mindmap
+    export_suffixes: [pdf]
+  mw:
+    name: Maple Worksheet
+    export_suffixes: [pdf]
+  nb:
+    name: Mathematica Notebook
+    export_suffixes: [pdf]
+  numbers:
+    name: Apple Numbers
+    export_suffixes: [pdf, csv]
+  odg:
+    name: OpenOffice Draw
+    export_suffixes: [pdf, svg, eps, ps]
+  odp:
+    name: OpenOffice Impress
+    export_suffixes: [pdf]
+  ods:
+    name: OpenOffice Calc
+    export_suffixes: [pdf, csv]
+  odt:
+    name: OpenOffice Writer
+    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+  pages:
+    name: Apple Pages
+    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+  ppsx:
+    name: Microsoft PowerPoint
+    export_suffixes: [pdf]
+  ppt:
+    name: Microsoft PowerPoint
+    export_suffixes: [pdf]
+  ppts:
+    name: Microsoft PowerPoint
+    export_suffixes: [pdf]
+  pptx:
+    name: Microsoft PowerPoint
+    export_suffixes: [pdf]
+  psd:
+    name: Adobe Photoshop
+    export_suffixes: [png, tiff, tif, bmp]
+  rtfd:
+    name: Rich Text Format Directory
+    export_suffixes: [pdf, txt, rtf, markdown, tex, md]
+  webarchive:
+    name: Safari Web Archive
+    export_suffixes: [pdf, html]
+  wma:
+    name: Windows Media Audio
+    export_suffixes: [mp3, ogg, flac]
+  wmv:
+    name: Windows Media Video
+    export_suffixes: [ogv, avi, mpg, mp4]
+  xcf:
+    name: GIMP Picture
+    export_suffixes: [png, tiff, tif, bmp]
+  xls:
+    name: Microsoft Excel
+    export_suffixes: [pdf, csv]
+  xlsx:
+    name: Microsoft Excel
+    export_suffixes: [pdf, csv]
+  xoj:
+    name: Xournal
+    export_suffixes: [pdf, svg, eps, ps]
