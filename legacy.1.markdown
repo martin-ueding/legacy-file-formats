@@ -76,3 +76,7 @@ Please report bugs in English or German to Martin Ueding <dev@martin-ueding.de>.
 
 `legacy`
   ~ Search your current working directory for legacy files.
+`legacy --rename`
+  ~ Search in the current directory and rename them from `foo.pdf` to `foo.bar.pdf`.
+`legacy -v --stat`
+  ~ Generate a list of files that could be renamed and also give a file type summary.
