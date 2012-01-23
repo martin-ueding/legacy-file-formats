@@ -172,6 +172,7 @@ def show_formats():
 
         table_data.append(table_row)
 
+    # TODO Use a pager for this.
     table.print_table(
         ["Suffix", "Name", "Export Suffixes"],
         table_data
