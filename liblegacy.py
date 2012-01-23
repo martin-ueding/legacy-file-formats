@@ -124,7 +124,7 @@ def _mark_invalid(dirname, name, pattern, counts):
     @param pattern Suffix of the original file.
     @param counts Dict with suffix counts.
     """
-    print dirname+"/"+name
+    print os.path.normpath(dirname+"/"+name)
 
     if not pattern in counts:
         counts[pattern] = 0
