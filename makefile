@@ -2,10 +2,13 @@
 
 pythonfiles:=$(wildcard *.py)
 
-all: epydoc legacy.1
+all: epydoc legacy.1 legacy.1.html
 
 legacy.1: legacy.1.markdown
 	pandoc -s $< -o $@
+
+legacy.1.html: legacy.1.markdown
+	pandoc -s -5 $< -o $@
 	
 epydoc: html/index.html
 
