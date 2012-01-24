@@ -40,6 +40,8 @@ No environment variables are used.
 
 # FILES
 
+## File Formats
+
 The program expects a configuration file with file formats to look for at
 `~/.config/legacy/formats.yaml`.
 
@@ -63,6 +65,18 @@ The minimal form, without names or export suffixes would be:
 	  cdr:
 
 You can set which file types should be looked for.
+
+## Export Rules
+
+With the `--make` option, the program will try to generate the exports with the pattern rules in a makefile at `~/.config/legacy/patterns.makefile`.
+
+Make will be called in the directory of the file onto the export file. Example:  `make -f ... -C ... document.ods.pdf`.
+
+For an open document spreadsheet, the rule could look like this:
+
+	%.ods.pdf: %.ods
+		libreoffice -convert-to pdf $< --headless
+		mv $(<:.ods=.pdf) $@
 
 # CONFORMING TO
 
