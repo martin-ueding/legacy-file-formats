@@ -71,6 +71,20 @@ def _check_file(name, options, counts, dirname, pattern):
                 else:
                     is_invalid = False
 
+            if is_invalid and options.make:
+                try:
+                    output = subprocess.check_output(["make", "-f", os.path.expanduser("~/.config/legacy/patterns.makefile"), "-C", os.path.dirname(exportfile), exportfile], stderr=subprocess.STDOUT)
+                except subprocess.CalledProcessError as e:
+                    pass
+                else:
+                    if options.verbose:
+                        print output
+
+                    # Check whether the file was successfully created now.
+                    if os.path.isfile(exportfile) and _check_time(dirname+"/"+name, exportfile):
+                        is_invalid = False
+
+
     if is_invalid:
         _mark_invalid(dirname, name, pattern, counts)
 

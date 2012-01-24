@@ -25,6 +25,7 @@ def _parse_args():
     """
     parser = optparse.OptionParser(usage="%prog [paths...]", description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")
     parser.add_option("--formats", dest="formats", action="store_true", default=False, help="Show known formats and exit.")
+    parser.add_option("--make", dest="make", action="store_true", default=False, help="Uses makefile to generate export files.")
     parser.add_option("--rename", dest="rename", action="store_true", default=False, help="Rename file.pdf to file.old.pdf [default %default].")
     parser.add_option("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %default]")
     parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that export is newer than other file. [default %default]")
