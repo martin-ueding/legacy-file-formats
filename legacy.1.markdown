@@ -41,7 +41,7 @@ No environment variables are used.
 # FILES
 
 The program expects a configuration file with file formats to look for at
-`~/.legacy.yaml`.
+`~/.config/legacy/formats.yaml`.
 
 The file should have the following structure:
 
@@ -66,7 +66,7 @@ You can set which file types should be looked for.
 
 # CONFORMING TO
 
-The configuration file is in the YAML format.
+The file formats file is in the YAML format.
 
 # BUGS
 
