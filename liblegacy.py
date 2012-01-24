@@ -19,6 +19,8 @@ import table
 
 _patterns = file_formats.get_patterns()
 
+_pattern_makefile = os.path.expanduser("~/.config/legacy/patterns.makefile")
+
 def checkfolder(args, dirname, names):
     """
     Checks a folder for files that lack an export.
@@ -72,8 +74,13 @@ def _check_file(name, options, counts, dirname, pattern):
                     is_invalid = False
 
             if is_invalid and options.make:
+                if not os.path.isfile(_pattern_makefile):
+                    print "Please create a pattern makefile at"
+                    print _pattern_makefile
+                    sys.exit(1)
+
                 try:
-                    output = subprocess.check_output(["make", "-f", os.path.expanduser("~/.config/legacy/patterns.makefile"), "-C", os.path.dirname(exportfile), exportfile], stderr=subprocess.STDOUT)
+                    output = subprocess.check_output(["make", "-f", _pattern_makefile, "-C", os.path.dirname(exportfile), exportfile], stderr=subprocess.STDOUT)
                 except subprocess.CalledProcessError as e:
                     pass
                 else:
