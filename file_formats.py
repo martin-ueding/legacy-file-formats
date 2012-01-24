@@ -25,7 +25,7 @@ def get_patterns():
 
     @return Pattern dict.
     """
-    filename = os.path.expanduser("~/.legacy.yaml")
+    filename = os.path.expanduser("~/.config/legacy/formats.yaml")
     if not os.path.isfile(filename):
         print "Could not find the configuration file."
         print "Please create a YAML file",filename
