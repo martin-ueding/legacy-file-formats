@@ -74,26 +74,38 @@ def _check_file(name, options, counts, dirname, pattern):
                     is_invalid = False
 
             if is_invalid and options.make:
-                if not os.path.isfile(_pattern_makefile):
-                    print "Please create a pattern makefile at"
-                    print _pattern_makefile
-                    sys.exit(1)
+                make_export(exportfile)
 
-                try:
-                    output = subprocess.check_output(["make", "-f", _pattern_makefile, "-C", os.path.dirname(exportfile), exportfile], stderr=subprocess.STDOUT)
-                except subprocess.CalledProcessError as e:
-                    pass
-                else:
-                    if options.verbose:
-                        print output
-
-                    # Check whether the file was successfully created now.
-                    if os.path.isfile(exportfile) and _check_time(dirname+"/"+name, exportfile):
-                        is_invalid = False
+                # Check whether the file was successfully created now.
+                if os.path.isfile(exportfile) and _check_time(dirname+"/"+name, exportfile):
+                    is_invalid = False
 
 
     if is_invalid:
         _mark_invalid(dirname, name, pattern, counts)
+
+
+def make_export(exportfile):
+    """
+    Uses a central makefile to create the export file.
+
+    @param exportfile File to be exported.
+    @return Whether `make` returned with success.
+    """
+    if not os.path.isfile(_pattern_makefile):
+        print "Please create a pattern makefile at"
+        print _pattern_makefile
+        sys.exit(1)
+
+    try:
+        output = subprocess.check_output(["make", "-f", _pattern_makefile, "-C", os.path.dirname(exportfile), exportfile], stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        return False
+    else:
+        if options.verbose:
+            print output
+
+        return True
 
 
 def _check_time(origfile, exportfile):
