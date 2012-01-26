@@ -68,7 +68,7 @@ def _check_file(name, options, counts, dirname, pattern):
             # time is newer than the original, if that option is specified.
             if os.path.isfile(exportfile):
                 if options.time:
-                    if not _check_time(dirname+"/"+name, exportfile):
+                    if _check_time(dirname+"/"+name, exportfile):
                         is_invalid = False
                 else:
                     is_invalid = False
