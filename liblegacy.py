@@ -74,7 +74,7 @@ def _check_file(name, options, counts, dirname, pattern):
                     is_invalid = False
 
             if is_invalid and options.make:
-                make_export(exportfile)
+                make_export(exportfile, options)
 
                 # Check whether the file was successfully created now.
                 if os.path.isfile(exportfile) and _check_time(dirname+"/"+name, exportfile):
@@ -85,7 +85,7 @@ def _check_file(name, options, counts, dirname, pattern):
         _mark_invalid(dirname, name, pattern, counts)
 
 
-def make_export(exportfile):
+def make_export(exportfile, options):
     """
     Uses a central makefile to create the export file.
 
