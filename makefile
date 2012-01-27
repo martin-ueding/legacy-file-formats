@@ -13,7 +13,7 @@ legacy.1.html: legacy.1.markdown
 epydoc: html/index.html
 
 html/index.html: legacy $(pythonfiles)
-	epydoc $^
+	epydoc -v $^
 
 .PHONY: clean
 clean:
