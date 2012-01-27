@@ -9,8 +9,6 @@ Library for the legacy script.
 Contains functions to check folders, rename found files.
 """
 
-__docformat__ = "javadoc en"
-
 import os
 import subprocess
 
@@ -25,9 +23,12 @@ def checkfolder(args, dirname, names):
     """
     Checks a folder for files that lack an export.
 
-    @param args Arguments passed from `os.walk`.
-    @param dirname Name of the currently parsed directory.
-    @param names List of files and directories in the folder.
+    @param args: Arguments passed from C{os.walk}.
+    @type args: list
+    @param dirname: Name of the currently parsed directory.
+    @type dirname: str
+    @param names: List of files and directories in the folder.
+    @type names: list
     """
     options, counts = args
 
@@ -44,15 +45,20 @@ def _check_file(name, options, counts, dirname, pattern):
     """
     Checks a file for export file(s).
 
-    In case `file.old` does not have a `file.old.pdf`, a `file.pdf` is checked
-    alternatively. It the latter is found, it is moved to `file.old.pdf` to
+    In case C{file.old} does not have a C{file.old.pdf}, a C{file.pdf} is checked
+    alternatively. It the latter is found, it is moved to C{file.old.pdf} to
     show that it is just an export of the original file, not a file on its own.
 
-    @param name Name of the file.
-    @param dirname Directory of the file.
-    @param options Program options.
-    @param counts Suffix statistics.
-    @param pattern Suffix of this file.
+    @param name: Name of the file.
+    @type name: str
+    @param dirname: Directory of the file.
+    @type dirname: str
+    @param options: Program options.
+    @type options: object
+    @param counts: Suffix statistics.
+    @type counts: dict
+    @param pattern: Suffix of this file.
+    @type pattern: str
     """
     is_invalid = True
 
@@ -89,8 +95,10 @@ def make_export(exportfile, options):
     """
     Uses a central makefile to create the export file.
 
-    @param exportfile File to be exported.
-    @return Whether `make` returned with success.
+    @param exportfile: File to be exported.
+    @type exportfile: str
+    @return: Whether C{make} returned with success.
+    @rtype: bool
     """
     if not os.path.isfile(_pattern_makefile):
         print "Please create a pattern makefile at"
@@ -110,11 +118,14 @@ def make_export(exportfile, options):
 
 def _check_time(origfile, exportfile):
     """
-    Check whether `origfile` is older than `exportfile`.
+    Check whether C{origfile} is older than C{exportfile}.
 
-    @param origfile Path to first file.
-    @param exportfile Path to second file.
-    @return Whether first file is older than second.
+    @param origfile: Path to first file.
+    @type origfile: str
+    @param exportfile: Path to second file.
+    @type exportfile: str
+    @return: Whether first file is older than second.
+    @rtype: bool
     """
     origtime = os.path.getmtime(origfile)
     exporttime = os.path.getmtime(exportfile)
@@ -130,11 +141,11 @@ def _check_rename(dirname, name, exportfile, exportsuffix, options):
 
     Rename the file then.
 
-    @param dirname Directory of the original file.
-    @param name Name of the original file.
-    @param exportfile Expected exportfile.
-    @param exportsuffix Expected suffix of the export file.
-    @param options General program options.
+    @param dirname: Directory of the original file.
+    @param name: Name of the original file.
+    @param exportfile: Expected exportfile.
+    @param exportsuffix: Expected suffix of the export file.
+    @param options: General program options.
     """
     if not os.path.isfile(exportfile):
         alt_exportfile = dirname+"/"+os.path.splitext(name)[0]+"."+exportsuffix
@@ -153,10 +164,10 @@ def _mark_invalid(dirname, name, pattern, counts):
     """
     Marks a file as having no export.
 
-    @param dirname Directory of the file.
-    @param name Name of the file.
-    @param pattern Suffix of the original file.
-    @param counts Dict with suffix counts.
+    @param dirname: Directory of the file.
+    @param name: Name of the file.
+    @param pattern: Suffix of the original file.
+    @param counts: Dict with suffix counts.
     """
     print os.path.normpath(dirname+"/"+name)
 
@@ -170,7 +181,7 @@ def print_summary(counts):
     """
     Prints a statistic.
 
-    @param counts Dict with `suffix: counts` pairs.
+    @param counts: Dict with C{suffix: counts} pairs.
     """
     if len(counts) == 0:
         return

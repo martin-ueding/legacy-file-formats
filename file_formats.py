@@ -7,8 +7,6 @@
 This module contains the file type definitions.
 """
 
-__docformat__ = "javadoc en"
-
 import os
 import sys
 import yaml
@@ -17,13 +15,15 @@ def get_patterns():
     """
     Get dict with patterns.
 
-    The pattern dict is build up like this
-    {"suffix":
-        {"name": Long Name, "export_suffixes": [export suffix, …]}
-        ...
-    }
+    The pattern dict is build up like this::
 
-    @return Pattern dict.
+        {"suffix":
+            {"name": Long Name, "export_suffixes": [export suffix, …]}
+            ...
+        }
+
+    @return: Pattern dict.
+    @rtype: dict
     """
     filename = os.path.expanduser("~/.config/legacy/formats.yaml")
     if not os.path.isfile(filename):
