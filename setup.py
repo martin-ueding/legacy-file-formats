@@ -4,13 +4,12 @@
 from distutils.core import setup
 
 setup(
-    name = "legacylib",
     author = "Martin Ueding",
     author_email = "dev@martin-ueding.de",
     license = "GPL3",
-    version = "1.4",
-
+    name = "legacylib",
     packages = ["legacylib"],
-    scripts = ["legacy"],
     requires = ["prettytable"],
+    scripts = ["legacy"],
+    version = "1.4",
 )
