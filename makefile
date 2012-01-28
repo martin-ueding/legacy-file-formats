@@ -20,6 +20,8 @@ epydoc: html/index.html
 
 install:
 	install legacy $(DESTDIR)/usr/bin/
+	install export/nb2pdf $(DESTDIR)/usr/bin/
+	install export/xcf2png $(DESTDIR)/usr/bin/
 
 ###############################################################################
 #                               Private Targets                               #
