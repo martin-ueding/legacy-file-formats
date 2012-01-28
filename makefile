@@ -6,7 +6,7 @@ pythonfiles:=$(wildcard *.py */*.py)
 #                               Public Targets                                #
 ###############################################################################
 
-all: legacy.1 legacy.1.html
+all: legacy.1 legacy.1.html legacy.1.gz
 
 .PHONY: clean
 clean:
@@ -18,7 +18,7 @@ clean:
 
 epydoc: html/index.html
 
-install: legacy.1.gz
+install:
 	install export/nb2pdf $(DESTDIR)/usr/bin/
 	install export/xcf2png $(DESTDIR)/usr/bin/
 	install --mode=644 legacy.1.gz /usr/share/man/man1/
