@@ -6,7 +6,7 @@ from distutils.core import setup
 setup(
     author = "Martin Ueding",
     author_email = "dev@martin-ueding.de",
-    description = "Finds file formats that might become unreadable."
+    description = "Finds file formats that might become unreadable.",
     license = "GPL3",
     name = "legacylib",
     packages = ["legacylib"],
