@@ -18,6 +18,7 @@ import file_formats
 
 _patterns = file_formats.get_patterns()
 
+# TODO Ship some central makefile as a template and fallback.
 _pattern_makefile = os.path.expanduser("~/.config/legacy/patterns.makefile")
 
 def checkfolder(args, dirname, names):

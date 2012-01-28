@@ -25,6 +25,7 @@ def get_patterns():
     @return: Pattern dict.
     @rtype: dict
     """
+    # TODO Ship some central formats file as a template and fallback.
     filename = os.path.expanduser("~/.config/legacy/formats.yaml")
     if not os.path.isfile(filename):
         print "Could not find the configuration file."
