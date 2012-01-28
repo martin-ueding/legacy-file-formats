@@ -29,6 +29,7 @@ install:
 uninstall:
 	$(RM) $(DESTDIR)/usr/bin/nb2pdf
 	$(RM) $(DESTDIR)/usr/bin/xcf2png
+	$(RM) -rf $(DESTDIR)/etc/legacy
 	$(RM) /usr/share/man/man1/legacy.1.gz
 
 ###############################################################################
