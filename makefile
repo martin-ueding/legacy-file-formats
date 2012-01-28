@@ -1,6 +1,6 @@
 # Copyright (c) 2012 Martin Ueding <dev@martin-ueding.de>
 
-pythonfiles:=$(wildcard *.py)
+pythonfiles:=$(wildcard *.py */*.py)
 
 ###############################################################################
 #                               Public Targets                                #
