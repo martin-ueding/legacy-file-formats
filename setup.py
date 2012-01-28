@@ -11,4 +11,5 @@ setup(
     version = "1.4",
 
     packages = ["legacylib"],
+    scripts = ["legacy"],
 )
