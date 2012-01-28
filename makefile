@@ -18,11 +18,12 @@ clean:
 
 epydoc: html/index.html
 
-install:
+install: legacy.1.gz
 	install legacy $(DESTDIR)/usr/bin/
 	install export/nb2pdf $(DESTDIR)/usr/bin/
 	install export/xcf2png $(DESTDIR)/usr/bin/
 	install --mode=644 legacylib $(DESTDIR)/usr/local/lib/python2.7/site-packages/
+	install legacy.1.gz /usr/share/man/man1/
 
 ###############################################################################
 #                               Private Targets                               #
@@ -30,6 +31,9 @@ install:
 
 legacy.1: legacy.1.markdown
 	pandoc -s $< -o $@
+
+legacy.1.gz: legacy.1
+	cat $< | gzip > $@
 
 legacy.1.html: legacy.1.markdown
 	pandoc -s -5 $< -o $@
