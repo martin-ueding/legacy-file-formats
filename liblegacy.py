@@ -36,7 +36,13 @@ def checkfolder(args, dirname, names):
 
     # Iterate thorugh all the files and folders.
     for name in names:
-        suffix = name.lower().split('.')[-1]
+        nameparts = name.lower().split('.')
+
+        # A folder `pages` should not be picked up, a folder `.bzr` should be.
+        if len(nameparts) == 1:
+            continue
+
+        suffix = nameparts[-1]
         if suffix in _patterns:
             _check_file(name, options, counts, dirname, suffix)
 
