@@ -1,8 +1,6 @@
 suffixes:
   bzr:
     name: Bazaar VCS
-    export_suffixes:
-    - git
   cdr:
     name: Corel Draw
     export_suffixes:
@@ -15,11 +13,12 @@ suffixes:
     export_suffixes:
     - iso
     - zip
+    - tar
+    - tar.gz
   doc:
     name: Microsoft Word
     export_suffixes:
     - markdown
-    - md
     - pdf
     - rtf
     - tex
@@ -28,7 +27,22 @@ suffixes:
     name: Microsoft Word
     export_suffixes:
     - markdown
-    - md
+    - pdf
+    - rtf
+    - tex
+    - txt
+  dot:
+    name: Microsoft Word Template
+    export_suffixes:
+    - markdown
+    - pdf
+    - rtf
+    - tex
+    - txt
+  dotx:
+    name: Microsoft Word Template
+    export_suffixes:
+    - markdown
     - pdf
     - rtf
     - tex
@@ -45,7 +59,6 @@ suffixes:
     export_suffixes:
     - eps
     - pdf
-    - ps
     - svg
   key:
     name: Apple Keynote
@@ -55,6 +68,7 @@ suffixes:
     name: Mindnode Mindmap
     export_suffixes:
     - pdf
+    - txt
   mw:
     name: Maple Worksheet
     export_suffixes:
@@ -73,7 +87,6 @@ suffixes:
     export_suffixes:
     - eps
     - pdf
-    - ps
     - svg
   odp:
     name: OpenOffice Impress
@@ -88,18 +101,14 @@ suffixes:
     name: OpenOffice Writer
     export_suffixes:
     - markdown
-    - md
     - pdf
-    - rtf
     - tex
     - txt
   pages:
     name: Apple Pages
     export_suffixes:
     - markdown
-    - md
     - pdf
-    - rtf
     - tex
     - txt
   ppsx:
@@ -125,15 +134,22 @@ suffixes:
     - png
     - tif
     - tiff
+  rtf:
+    name: Rich Text Format
+    export_suffixes:
+    - markdown
+    - pdf
+    - tex
+    - txt
   rtfd:
     name: Rich Text Format Directory
     export_suffixes:
     - markdown
-    - md
     - pdf
-    - rtf
     - tex
     - txt
+  svn:
+    name: Subversion
   webarchive:
     name: Safari Web Archive
     export_suffixes:
@@ -170,9 +186,6 @@ suffixes:
     - csv
     - pdf
   xoj:
-    name: Xournal
+    name: Xournal Notebook
     export_suffixes:
-    - eps
     - pdf
-    - ps
-    - svg
