@@ -18,9 +18,6 @@ import file_formats
 
 _patterns = file_formats.get_patterns()
 
-_pattern_makefile = "/etc/legacy/patterns.makefile"
-_pattern_makefile_user = os.path.expanduser("~/.config/legacy/patterns.makefile")
-
 def checkfolder(args, dirname, names):
     """
     Checks a folder for files that lack an export.
@@ -99,6 +96,31 @@ def _check_file(name, options, counts, dirname, pattern):
         _mark_invalid(dirname, name, pattern, counts)
 
 
+def get_makefile_path(result=[]):
+    """
+    Returns the path to the pattern makefile.
+
+    @param result: Hack for static variable.
+    @type result: list
+    @return: Path to makefile.
+    @rtype: str
+    """
+    pattern_makefile = "/etc/legacy/patterns.makefile"
+    pattern_makefile_user = os.path.expanduser("~/.config/legacy/patterns.makefile")
+
+    if os.path.isfile(pattern_makefile_user):
+        result[0] = pattern_makefile_user
+    elif os.path.isfile(pattern_makefile):
+        result[0] = pattern_makefile
+    else:
+        print "There is no pattern makefile. Please create at either location:"
+        print pattern_makefile
+        print pattern_makefile_user
+        sys.exit(1)
+
+    return result[0]
+
+
 def make_export(exportfile, options):
     """
     Uses a central makefile to create the export file.
@@ -108,13 +130,10 @@ def make_export(exportfile, options):
     @return: Whether C{make} returned with success.
     @rtype: bool
     """
-    if not os.path.isfile(_pattern_makefile):
-        print "Please create a pattern makefile at"
-        print _pattern_makefile
-        sys.exit(1)
+    pattern_makefile = get_makefile_path()
 
     try:
-        output = subprocess.check_output(["make", "-f", _pattern_makefile, "-C", os.path.dirname(exportfile), exportfile], stderr=subprocess.STDOUT)
+        output = subprocess.check_output(["make", "-f", pattern_makefile, "-C", os.path.dirname(exportfile), exportfile], stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
         return False
     else:
