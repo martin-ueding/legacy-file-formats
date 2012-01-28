@@ -12,4 +12,5 @@ setup(
 
     packages = ["legacylib"],
     scripts = ["legacy"],
+    requires = ["prettytable"],
 )
