@@ -19,7 +19,7 @@ clean:
 epydoc: html/index.html
 
 install: legacy.1.gz
-	install export/nb2pdf $(DESTDIR)/usr/bin/
+	#install export/nb2pdf $(DESTDIR)/usr/bin/
 	install export/xcf2png $(DESTDIR)/usr/bin/
 	install --mode=644 legacy.1.gz /usr/share/man/man1/
 	python setup.py install
