@@ -2,18 +2,11 @@
 
 pythonfiles:=$(wildcard *.py)
 
+###############################################################################
+#                               Public Targets                                #
+###############################################################################
+
 all: legacy.1 legacy.1.html
-
-legacy.1: legacy.1.markdown
-	pandoc -s $< -o $@
-
-legacy.1.html: legacy.1.markdown
-	pandoc -s -5 $< -o $@
-	
-epydoc: html/index.html
-
-html/index.html: legacy $(pythonfiles)
-	epydoc -v $^
 
 .PHONY: clean
 clean:
@@ -22,3 +15,18 @@ clean:
 	$(RM) legacy.1
 	$(RM) legacy.1.html
 	$(RM) legacyc
+
+epydoc: html/index.html
+
+###############################################################################
+#                               Private Targets                               #
+###############################################################################
+
+legacy.1: legacy.1.markdown
+	pandoc -s $< -o $@
+
+legacy.1.html: legacy.1.markdown
+	pandoc -s -5 $< -o $@
+
+html/index.html: legacy $(pythonfiles)
+	epydoc -v $^
