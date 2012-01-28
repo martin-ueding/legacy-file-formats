@@ -29,6 +29,9 @@ install: legacy.1.gz
 #                               Private Targets                               #
 ###############################################################################
 
+html/index.html: legacy $(pythonfiles)
+	epydoc -v $^
+
 legacy.1: legacy.1.markdown
 	pandoc -s $< -o $@
 
@@ -37,6 +40,3 @@ legacy.1.gz: legacy.1
 
 legacy.1.html: legacy.1.markdown
 	pandoc -s -5 $< -o $@
-
-html/index.html: legacy $(pythonfiles)
-	epydoc -v $^
