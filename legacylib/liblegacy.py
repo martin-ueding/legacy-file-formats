@@ -12,8 +12,9 @@ Contains functions to check folders, rename found files.
 import os
 import subprocess
 
+import prettytable
+
 import file_formats
-import table
 
 _patterns = file_formats.get_patterns()
 
@@ -196,7 +197,7 @@ def print_summary(counts):
 
     print
 
-    table.print_table(
+    prettytable.print_table(
         ["Count", "Suffix", "Name"],
         [[str(counts[key]).rjust(5), key, _patterns[key]["name"]] for key in sorted(counts)]
     )
@@ -226,7 +227,7 @@ def show_formats():
         table_data.append(table_row)
 
     proc = subprocess.Popen(["less", "-FRSX"], stdin=subprocess.PIPE)
-    table.print_table(
+    prettytable.print_table(
         ["Suffix", "Name", "Export Suffixes"],
         table_data,
         outfile = proc.stdin
