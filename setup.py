@@ -12,5 +12,6 @@ setup(
     packages = ["legacylib"],
     requires = ["prettytable"],
     scripts = ["legacy"],
+    url = "https://github.com/martin-ueding/legacy-file-formats",
     version = "1.4",
 )
