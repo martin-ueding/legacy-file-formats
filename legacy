@@ -13,7 +13,7 @@ import optparse
 import os
 import sys
 
-import liblegacy
+from legacylib import liblegacy
 
 def _parse_args():
     """
