@@ -138,7 +138,9 @@ def _check_time(origfile, exportfile):
 
     # If the export is newer than the origtime, the
     # file is valid.
-    return exporttime > origtime
+    valid = exporttime >= origtime
+
+    return valid
 
 
 def _check_rename(dirname, name, exportfile, exportsuffix, options):
