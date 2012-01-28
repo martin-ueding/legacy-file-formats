@@ -68,9 +68,11 @@ You can set which file types should be looked for.
 
 ## Export Rules
 
-With the `--make` option, the program will try to generate the exports with the pattern rules in a makefile at `~/.config/legacy/patterns.makefile`.
+With the `--make` option, the program will try to generate the exports with the
+pattern rules in a makefile at `~/.config/legacy/patterns.makefile`.
 
-Make will be called in the directory of the file onto the export file. Example:  `make -f ... -C ... document.ods.pdf`.
+Make will be called in the directory of the file onto the export file. Example:
+`make -f ... -C ... document.ods.pdf`.
 
 For an open document spreadsheet, the rule could look like this:
 
