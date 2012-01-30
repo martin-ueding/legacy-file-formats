@@ -219,7 +219,7 @@ def print_summary(counts):
 
     prettytable.print_table(
         ["Count", "Suffix", "Name"],
-        [[str(counts[key]).rjust(5), key, _patterns[key]["name"]] for key in sorted(counts)]
+        [[counts[key], key, _patterns[key]["name"]] for key in sorted(counts)]
     )
 
 
