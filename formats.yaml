@@ -54,6 +54,8 @@ suffixes:
     - mp4
     - mpg
     - ogv
+  hg:
+    name: Mercurial VCS
   indd:
     name: Adobe InDesign
     export_suffixes:
