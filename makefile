@@ -24,6 +24,7 @@ install:
 	install -d $(DESTDIR)/etc/legacy
 	install --mode=664 export/patterns.makefile $(DESTDIR)/etc/legacy/
 	install --mode=644 legacy.1.gz /usr/share/man/man1/
+	install --mode=644 formats.yaml $(DESTDIR)/etc/legacy/
 	python setup.py install
 
 uninstall:
