@@ -133,8 +133,13 @@ def make_export(exportfile, options):
     """
     pattern_makefile = get_makefile_path()
 
+    make_command = ["make", "-f", pattern_makefile, "-C", os.path.dirname(exportfile), os.path.basename(exportfile)]
+
+    if options.verbose:
+        print ' '.join(make_command)
+
     try:
-        output = subprocess.check_output(["make", "-f", pattern_makefile, "-C", os.path.dirname(exportfile), exportfile], stderr=subprocess.STDOUT)
+        output = subprocess.check_output(make_command, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
         return False
     else:
