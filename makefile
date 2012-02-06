@@ -35,6 +35,7 @@ install:
 uninstall:
 	$(RM) $(DESTDIR)/usr/bin/nb2pdf
 	$(RM) $(DESTDIR)/usr/bin/xcf2png
+	$(RM) $(DESTDIR)/usr/bin/xoj2png
 	$(RM) -rf $(DESTDIR)/etc/legacy
 	$(RM) -rf $(DESTDIR)/usr/share/legacy/
 	$(RM) /usr/share/man/man1/legacy.1.gz
