@@ -7,6 +7,7 @@ pythonfiles:=$(wildcard *.py */*.py)
 ###############################################################################
 
 all: legacy.1 legacy.1.html legacy.1.gz
+	make -C export
 
 .PHONY: clean
 clean:
@@ -15,6 +16,7 @@ clean:
 	$(RM) legacy.1
 	$(RM) legacy.1.html
 	$(RM) legacyc
+	make -C export clean
 
 epydoc: html/index.html
 
