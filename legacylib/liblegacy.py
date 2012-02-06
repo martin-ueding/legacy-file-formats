@@ -108,15 +108,16 @@ def get_makefile_path(result=[]):
     pattern_makefile = "/etc/legacy/patterns.makefile"
     pattern_makefile_user = os.path.expanduser("~/.config/legacy/patterns.makefile")
 
-    if os.path.isfile(pattern_makefile_user):
-        result[0] = pattern_makefile_user
-    elif os.path.isfile(pattern_makefile):
-        result[0] = pattern_makefile
-    else:
-        print "There is no pattern makefile. Please create at either location:"
-        print pattern_makefile
-        print pattern_makefile_user
-        sys.exit(1)
+    if len(result) == 0:
+        if os.path.isfile(pattern_makefile_user):
+            result.append(pattern_makefile_user)
+        elif os.path.isfile(pattern_makefile):
+            result.append(pattern_makefile)
+        else:
+            print "There is no pattern makefile. Please create at either location:"
+            print pattern_makefile
+            print pattern_makefile_user
+            sys.exit(1)
 
     return result[0]
 
