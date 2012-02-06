@@ -1,3 +1,5 @@
+# Xournal to PDF (xoj2pdf)
+
 This is a very hacky program, since it uses the user interface of Xournal.
 This is meant as a temporary fix until Xournal comes with a command line option
 to export to PDF.
