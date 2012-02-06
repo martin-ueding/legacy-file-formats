@@ -43,7 +43,9 @@ No environment variables are used.
 ## File Formats
 
 The program expects a configuration file with file formats to look for at
-`~/.config/legacy/formats.yaml`.
+`~/.config/legacy/formats.yaml`. If there is no file, the default `/etc/legacy/patterns.makefile` is used.
+
+You can copy this file into your home directory and alter it. If you have your own file, the system wide is not used.
 
 The file should have the following structure:
 
@@ -68,8 +70,11 @@ You can set which file types should be looked for.
 
 ## Export Rules
 
-With the `--make` option, the program will try to generate the exports with the
-pattern rules in a makefile at `~/.config/legacy/patterns.makefile`.
+With the `--make` option, the program will try to generate the exports automatically.
+
+I uses the pattern rules in a makefile at `~/.config/legacy/patterns.makefile`. If there is no file like that, the default `/etc/legacy/formats.yaml` is used instead.
+
+You can copy this file into your home directory and alter it. If you have your own file, the system wide is not used.
 
 Make will be called in the directory of the file onto the export file. Example:
 `make -f ... -C ... document.ods.pdf`.
