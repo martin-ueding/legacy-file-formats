@@ -27,12 +27,15 @@ install:
 	install --mode=664 export/patterns.makefile $(DESTDIR)/etc/legacy/
 	install --mode=644 legacy.1.gz /usr/share/man/man1/
 	install --mode=644 formats.yaml $(DESTDIR)/etc/legacy/
+	install -d $(DESTDIR)/usr/share/legacy
+	install --mode=644 export/xoj2pdf/xoj2pdf.jar $(DESTDIR)/usr/share/legacy/
 	python setup.py install
 
 uninstall:
 	$(RM) $(DESTDIR)/usr/bin/nb2pdf
 	$(RM) $(DESTDIR)/usr/bin/xcf2png
 	$(RM) -rf $(DESTDIR)/etc/legacy
+	$(RM) -rf $(DESTDIR)/usr/share/legacy/
 	$(RM) /usr/share/man/man1/legacy.1.gz
 
 ###############################################################################
