@@ -23,6 +23,7 @@ epydoc: html/index.html
 install:
 	install export/nb2pdf $(DESTDIR)/usr/bin/
 	install export/xcf2png $(DESTDIR)/usr/bin/
+	install export/xoj2pdf/xoj2png $(DESTDIR)/usr/bin/
 	install -d $(DESTDIR)/etc/legacy
 	install --mode=664 export/patterns.makefile $(DESTDIR)/etc/legacy/
 	install --mode=644 legacy.1.gz /usr/share/man/man1/
