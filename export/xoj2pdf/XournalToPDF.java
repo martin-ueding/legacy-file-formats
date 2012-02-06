@@ -64,6 +64,7 @@ public class XournalToPDF {
 
 			// Close Xournal.
 			keypress(robot, new int[] {KeyEvent.VK_ALT, KeyEvent.VK_F4});
+			robot.delay(500);
 		}
 		catch (AWTException e) {
 			e.printStackTrace();
