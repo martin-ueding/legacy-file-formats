@@ -1,8 +1,10 @@
 suffixes:
   bzr:
     name: Bazaar VCS
+    category: version control
   cdr:
     name: Corel Draw
+    category: drawing
     export_suffixes:
     - eps
     - pdf
@@ -10,6 +12,7 @@ suffixes:
     - svg
   dmg:
     name: Apple Disk Image
+    category: disk image
     export_suffixes:
     - iso
     - zip
@@ -17,6 +20,7 @@ suffixes:
     - tar.gz
   doc:
     name: Microsoft Word
+    category: formatted text
     export_suffixes:
     - markdown
     - pdf
@@ -25,6 +29,7 @@ suffixes:
     - txt
   docx:
     name: Microsoft Word
+    category: formatted text
     export_suffixes:
     - markdown
     - pdf
@@ -33,6 +38,7 @@ suffixes:
     - txt
   dot:
     name: Microsoft Word Template
+    category: formatted text
     export_suffixes:
     - markdown
     - pdf
@@ -41,6 +47,7 @@ suffixes:
     - txt
   dotx:
     name: Microsoft Word Template
+    category: formatted text
     export_suffixes:
     - markdown
     - pdf
@@ -49,6 +56,7 @@ suffixes:
     - txt
   flv:
     name: Flash Video
+    category: video
     export_suffixes:
     - avi
     - mp4
@@ -56,14 +64,17 @@ suffixes:
     - ogv
   hg:
     name: Mercurial VCS
+    category: version control
   indd:
     name: Adobe InDesign
+    category: drawing
     export_suffixes:
     - eps
     - pdf
     - svg
   key:
     name: Apple Keynote
+    category: presentation
     export_suffixes:
     - pdf
   mindnode:
@@ -81,26 +92,31 @@ suffixes:
     - pdf
   numbers:
     name: Apple Numbers
+    category: tabular data
     export_suffixes:
     - csv
     - pdf
   odg:
     name: OpenOffice Draw
+    category: drawing
     export_suffixes:
     - eps
     - pdf
     - svg
   odp:
     name: OpenOffice Impress
+    category: presentation
     export_suffixes:
     - pdf
   ods:
     name: OpenOffice Calc
+    category: tabular data
     export_suffixes:
     - csv
     - pdf
   odt:
     name: OpenOffice Writer
+    category: formatted text
     export_suffixes:
     - markdown
     - pdf
@@ -108,6 +124,7 @@ suffixes:
     - txt
   pages:
     name: Apple Pages
+    category: formatted text
     export_suffixes:
     - markdown
     - pdf
@@ -115,22 +132,27 @@ suffixes:
     - txt
   ppsx:
     name: Microsoft PowerPoint
+    category: presentation
     export_suffixes:
     - pdf
   ppt:
     name: Microsoft PowerPoint
+    category: presentation
     export_suffixes:
     - pdf
   ppts:
     name: Microsoft PowerPoint
+    category: presentation
     export_suffixes:
     - pdf
   pptx:
     name: Microsoft PowerPoint
+    category: presentation
     export_suffixes:
     - pdf
   psd:
     name: Adobe Photoshop
+    category: image
     export_suffixes:
     - bmp
     - png
@@ -138,6 +160,7 @@ suffixes:
     - tiff
   rtf:
     name: Rich Text Format
+    category: formatted text
     export_suffixes:
     - markdown
     - pdf
@@ -145,6 +168,7 @@ suffixes:
     - txt
   rtfd:
     name: Rich Text Format Directory
+    category: formatted text
     export_suffixes:
     - markdown
     - pdf
@@ -152,6 +176,7 @@ suffixes:
     - txt
   svn:
     name: Subversion
+    category: version control
   webarchive:
     name: Safari Web Archive
     export_suffixes:
@@ -159,12 +184,14 @@ suffixes:
     - pdf
   wma:
     name: Windows Media Audio
+    category: audio
     export_suffixes:
     - flac
     - mp3
     - ogg
   wmv:
     name: Windows Media Video
+    category: video
     export_suffixes:
     - avi
     - mp4
@@ -172,6 +199,7 @@ suffixes:
     - ogv
   xcf:
     name: GIMP Picture
+    category: image
     export_suffixes:
     - bmp
     - png
@@ -179,15 +207,18 @@ suffixes:
     - tiff
   xls:
     name: Microsoft Excel
+    category: tabular data
     export_suffixes:
     - csv
     - pdf
   xlsx:
     name: Microsoft Excel
+    category: tabular data
     export_suffixes:
     - csv
     - pdf
   xoj:
     name: Xournal Notebook
+    category: drawing
     export_suffixes:
     - pdf

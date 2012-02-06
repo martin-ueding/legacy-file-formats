@@ -245,6 +245,11 @@ def show_formats():
         else:
             table_row.append("")
 
+        if "category" in cur_pattern:
+            table_row.append(cur_pattern["category"])
+        else:
+            table_row.append("")
+
         if "export_suffixes" in cur_pattern:
             table_row.append(', '.join(sorted(cur_pattern["export_suffixes"])))
         else:
@@ -254,7 +259,7 @@ def show_formats():
 
     proc = subprocess.Popen(["less", "-FRSX"], stdin=subprocess.PIPE)
     prettytable.print_table(
-        ["Suffix", "Name", "Export Suffixes"],
+        ["Suffix", "Name", "Category", "Export Suffixes"],
         table_data,
         outfile = proc.stdin
     )
