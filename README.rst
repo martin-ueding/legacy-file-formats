@@ -1,6 +1,8 @@
 legacy file formats
 ===================
 
+Finds files which might become unreadable.
+
 installation
 ------------
 ::
