@@ -6,7 +6,7 @@ pythonfiles:=$(wildcard *.py */*.py)
 #                               Public Targets                                #
 ###############################################################################
 
-all: legacy.1 legacy.1.html legacy.1.gz
+all: legacy.1
 	make -C export
 
 .PHONY: clean
@@ -14,7 +14,6 @@ clean:
 	$(RM) *.pyc
 	$(RM) -r html
 	$(RM) legacy.1
-	$(RM) legacy.1.html
 	$(RM) legacyc
 	make -C export clean
 
@@ -26,7 +25,8 @@ install:
 	install export/xoj2pdf/xoj2pdf $(DESTDIR)/usr/bin/
 	install -d $(DESTDIR)/etc/legacy
 	install --mode=664 export/patterns.makefile $(DESTDIR)/etc/legacy/
-	install --mode=644 legacy.1.gz /usr/share/man/man1/
+	mkdir -p /usr/share/man/man1/
+	gzip -c legacy.1 > $(DESTDIR)/usr/share/man/man1/legacy.1.gz
 	install --mode=644 formats.yaml $(DESTDIR)/etc/legacy/
 	install -d $(DESTDIR)/usr/share/legacy
 	install --mode=644 export/xoj2pdf/xoj2pdf.jar $(DESTDIR)/usr/share/legacy/
@@ -47,11 +47,5 @@ uninstall:
 html/index.html: legacy $(pythonfiles)
 	epydoc -v $^
 
-legacy.1: legacy.1.markdown
-	pandoc -s $< -o $@
-
-legacy.1.gz: legacy.1
-	cat $< | gzip > $@
-
-legacy.1.html: legacy.1.markdown
-	pandoc -s -5 $< -o $@
+legacy.1: legacy.1.rst
+	rst2man $< $@
