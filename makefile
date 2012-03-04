@@ -44,7 +44,7 @@ uninstall:
 #                               Private Targets                               #
 ###############################################################################
 
-html/index.html: legacy $(pythonfiles)
+html/index.html: legacy $(filter-out setup.py,$(pythonfiles))
 	epydoc -v $^
 
 legacy.1: legacy.1.rst
