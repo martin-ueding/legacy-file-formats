@@ -18,12 +18,14 @@ import sys
 
 from legacylib import liblegacy
 
+__docformat__ = "restructuredtext en"
+
 def _parse_args():
     """
     Parses command line arguments.
 
-    @return: Tuple with options and arguments.
-    @rtype: tuple
+    :return: Tuple with options and arguments.
+    :rtype: tuple
     """
     parser = optparse.OptionParser(usage="%prog [paths...]", description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")
     parser.add_option("--formats", dest="formats", action="store_true", default=False, help="Show known formats and exit.")

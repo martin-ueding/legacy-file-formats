@@ -11,6 +11,8 @@ import os
 import sys
 import yaml
 
+__docformat__ = "restructuredtext en"
+
 def get_patterns():
     """
     Get dict with patterns.
@@ -22,8 +24,8 @@ def get_patterns():
             ...
         }
 
-    @return: Pattern dict.
-    @rtype: dict
+    :return: Pattern dict.
+    :rtype: dict
     """
     # TODO Ship some central formats file as a template and fallback.
     filename = "/etc/legacy/formats.yaml"
