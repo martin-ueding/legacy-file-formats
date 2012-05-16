@@ -33,7 +33,7 @@ public class XournalToPDF {
 			Robot robot = new Robot();
 
 			// Wait until Xournal is loaded.
-			robot.delay(5000);
+			robot.delay(10000);
 
 			// Open the Export dialog.
 			keypress(robot, new int[] {KeyEvent.VK_CONTROL, KeyEvent.VK_E});
