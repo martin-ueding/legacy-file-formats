@@ -1,4 +1,4 @@
-#!/usr/local/bin/math -script
+#!/usr/local/Wolfram/Mathematica/8.0/Executables/math -script
 
 (* Taken with permission from:                                        *)
 (* http://superuser.com/questions/381807/convert-mathematica-to-pdf-via-command-line/382064#382064 *)
