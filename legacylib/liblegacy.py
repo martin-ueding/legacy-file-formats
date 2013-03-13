@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2012 Martin Ueding <dev@martin-ueding.de>
+# Copyright (c) 2012-2013 Martin Ueding <dev@martin-ueding.de>
 
 ###############################################################################
 #                                   License                                   #
@@ -25,10 +25,9 @@ Library for the legacy script.
 Contains functions to check folders, rename found files.
 """
 
+from prettytable import PrettyTable
 import os
 import subprocess
-
-import prettytable
 
 import file_formats
 
@@ -241,10 +240,11 @@ def print_summary(counts):
 
     print
 
-    prettytable.print_table(
-        ["Count", "Suffix", "Name"],
-        [[counts[key], key, _patterns[key]["name"]] for key in sorted(counts)]
-    )
+    t = PrettyTable(["Count", "Suffix", "Name"])
+    t.align["Count"] = 'r'
+    for row in [[counts[key], key, _patterns[key]["name"]] for key in sorted(counts)]:
+        t.add_row(row)
+    print t
 
 
 def show_formats():
