@@ -20,17 +20,21 @@ clean:
 epydoc: html/index.html
 
 install:
-	install -d "$(DESTDIR)/usr/bin/"
-	install -d "/usr/share/man/man1/"
-	install -d "$(DESTDIR)/etc/legacy"
-	install -d "$(DESTDIR)/usr/share/legacy"
+	install -d "$(DESTDIR)/usr/share/man/man1/"
 	gzip -c legacy.1 > "$(DESTDIR)/usr/share/man/man1/legacy.1.gz"
+#
+	install -d "$(DESTDIR)/usr/share/legacy"
 	install --mode=644 "export/xoj2pdf/xoj2pdf.jar" "$(DESTDIR)/usr/share/legacy/"
+#
+	install -d "$(DESTDIR)/etc/legacy"
 	install --mode=644 "formats.yaml" "$(DESTDIR)/etc/legacy/"
 	install --mode=664 "export/patterns.makefile" "$(DESTDIR)/etc/legacy/"
+#
+	install -d "$(DESTDIR)/usr/bin/"
 	install "export/nb2pdf" "$(DESTDIR)/usr/bin/"
 	install "export/xcf2png" "$(DESTDIR)/usr/bin/"
 	install "export/xoj2pdf/xoj2pdf" "$(DESTDIR)/usr/bin/"
+#
 	python setup.py install --prefix "$(DESTDIR)" --install-layout deb
 
 uninstall:
