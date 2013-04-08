@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (c) 2012 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
 
 ###############################################################################
 #                                   License                                   #
@@ -29,5 +29,5 @@ setup(
     requires = ["prettytable"],
     scripts = ["legacy"],
     url = "https://github.com/martin-ueding/legacy-file-formats",
-    version = "1.4",
+    version = "1.6",
 )
