@@ -12,6 +12,8 @@ all: legacy.1
 .PHONY: clean
 clean:
 	$(RM) *.pyc
+	$(RM) -r build
+	$(RM) -r dist
 	$(RM) -r html
 	$(RM) legacy.1
 	$(RM) legacyc
