@@ -13,5 +13,5 @@ setup(
     requires = ["prettytable"],
     scripts = ["legacy"],
     url = "https://github.com/martin-ueding/legacy-file-formats",
-    version = "1.6",
+    version = "1.6.1",
 )
