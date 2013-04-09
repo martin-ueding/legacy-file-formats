@@ -4,7 +4,7 @@ xoj2pdf.jar: manifest.txt XournalToPDF.class
 	jar -cfm $@ $^
 
 %.class: %.java
-	javac $^
+	javac -encoding UTF-8 $^
 
 .PHONY: clean
 clean:
