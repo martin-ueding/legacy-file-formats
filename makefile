@@ -37,7 +37,7 @@ install:
 	install "export/xcf2png" "$(DESTDIR)/usr/bin/"
 	install "export/xoj2pdf/xoj2pdf" "$(DESTDIR)/usr/bin/"
 #
-	python setup.py install --prefix "$(DESTDIR)"
+	python setup.py install --install-layout=deb --prefix "$(DESTDIR)/usr/"
 
 uninstall:
 	$(RM) "$(DESTDIR)/usr/bin/nb2pdf"
