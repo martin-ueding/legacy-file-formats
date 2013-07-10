@@ -79,9 +79,15 @@ suffixes:
     - pdf
   mindnode:
     name: Mindnode Mindmap
+    category: Mindmap
     export_suffixes:
     - pdf
     - txt
+  mm:
+    name: FreeMind
+    category: Mindmap
+    export_suffixes:
+    - html
   mw:
     name: Maple Worksheet
     export_suffixes:
