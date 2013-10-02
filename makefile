@@ -19,7 +19,7 @@ clean:
 	$(RM) legacyc
 	make -C export clean
 
-epydoc: html/index.html
+html: html/index.html
 
 install:
 	install -d "$(DESTDIR)/usr/share/man/man1/"
@@ -43,7 +43,7 @@ uninstall:
 	$(RM) "$(DESTDIR)/usr/bin/nb2pdf"
 	$(RM) "$(DESTDIR)/usr/bin/xcf2png"
 	$(RM) "$(DESTDIR)/usr/bin/xoj2pdf"
-	$(RM) -rf "$(DESTDIR)/etc/legacy""
+	$(RM) -rf "$(DESTDIR)/etc/legacy"
 	$(RM) -rf "$(DESTDIR)/usr/share/legacy/"
 	$(RM) "/usr/share/man/man1/legacy.1.gz"
 
