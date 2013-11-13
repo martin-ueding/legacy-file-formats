@@ -235,7 +235,8 @@ def show_formats():
     """
     Prints a table of all supported formats.
     """
-    table_data = []
+    table = PrettyTable(["Suffix", "Name", "Category", "Export Suffixes"])
+    table.align = 'l'
     for pattern in sorted(_patterns):
         cur_pattern = _patterns[pattern]
         table_row = []
@@ -257,13 +258,6 @@ def show_formats():
         else:
             table_row.append("")
 
-        table_data.append(table_row)
+        table.add_row(table_row)
 
-    proc = subprocess.Popen(["less", "-FRSX"], stdin=subprocess.PIPE)
-    prettytable.print_table(
-        ["Suffix", "Name", "Category", "Export Suffixes"],
-        table_data,
-        outfile = proc.stdin
-    )
-    proc.stdin.close()
-    proc.communicate()
+    print(table)
