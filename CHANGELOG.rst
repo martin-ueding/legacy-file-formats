@@ -4,6 +4,9 @@
 Changelog
 #########
 
+v1.6.7
+    - Fix the ``--formats`` command.
+
 v1.6.6
     - Add ``.mm`` files
 
