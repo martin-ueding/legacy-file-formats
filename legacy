@@ -56,7 +56,8 @@ def main():
     for path in options.paths:
         if os.path.isdir(path):
             for dirpath, dirnames, filenames in os.walk(path):
-                liblegacy.checkfolder(dirpath, filenames + dirnames, options, counts)
+                allnames = filenames + dirnames
+                liblegacy.checkfolder(dirpath, allnames, options, counts)
 
     # Print the summary if desired.
     if options.stat:
