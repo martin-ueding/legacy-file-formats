@@ -55,7 +55,8 @@ def main():
     # Iterate through all given folders.
     for arg in args:
         if os.path.isdir(arg):
-            os.path.walk(arg, liblegacy.checkfolder, (options, counts))
+            for dirpath, dirnames, filenames in os.walk(arg):
+                liblegacy.checkfolder(dirpath, filenames + dirnames, options, counts)
 
     # Print the summary if desired.
     if options.stat:

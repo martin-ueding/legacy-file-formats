@@ -19,7 +19,7 @@ __docformat__ = "restructuredtext en"
 
 _patterns = file_formats.get_patterns()
 
-def checkfolder(args, dirname, names):
+def checkfolder(dirname, names, options, counts):
     """
     Checks a folder for files that lack an export.
 
@@ -30,8 +30,6 @@ def checkfolder(args, dirname, names):
     :param names: List of files and directories in the folder.
     :type names: list
     """
-    options, counts = args
-
     names.sort()
 
     # Iterate thorugh all the files and folders.
