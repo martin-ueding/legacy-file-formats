@@ -37,11 +37,12 @@ def get_patterns():
         sys.exit(1)
 
     if os.path.isfile(filename_user):
-        f = file(filename_user)
+        use_filename = filename_user
     else:
-        f = file(filename)
+        use_filename = filename
 
-    imported = yaml.load(f)
+    with open(use_filename) as f:
+        imported = yaml.load(f)
 
     patterns = imported["suffixes"]
 
