@@ -64,4 +64,4 @@ def main():
         liblegacy.print_summary(counts)
 
 if __name__ == "__main__":
-	main()
+    main()
