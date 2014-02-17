@@ -12,6 +12,7 @@ Contains functions to check folders, rename found files.
 import os
 import prettytable
 import subprocess
+import logging
 
 from . import file_formats
 
@@ -121,7 +122,7 @@ def get_makefile_path(result=[]):
     return result[0]
 
 
-def make_export(exportfile, options):
+def make_export(exportfile):
     """
     Uses a central makefile to create the export file.
 
@@ -134,16 +135,14 @@ def make_export(exportfile, options):
 
     make_command = ["make", "-f", pattern_makefile, "-C", os.path.dirname(exportfile), os.path.basename(exportfile)]
 
-    if options.verbose:
-        print(' '.join(make_command))
+    logging.info(' '.join(make_command))
 
     try:
         output = subprocess.check_output(make_command, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
         return False
     else:
-        if options.verbose:
-            print(output)
+        logging.info(output)
 
         return True
 
@@ -186,12 +185,10 @@ def _check_rename(dirname, name, exportfile, exportsuffix, options):
         if os.path.isfile(alt_exportfile):
             if options.rename:
                 os.rename(alt_exportfile, exportfile)
-                if options.verbose:
-                    print("Renaming", alt_exportfile, exportfile)
+                logging.info("Renaming %s %s", alt_exportfile, exportfile)
 
             else:
-                if options.verbose:
-                    print("Would rename", alt_exportfile, exportfile)
+                logging.info("Would rename %s %s", alt_exportfile, exportfile)
 
 
 def _mark_invalid(dirname, name, pattern, counts):

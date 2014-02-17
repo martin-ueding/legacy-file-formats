@@ -13,6 +13,7 @@ specify your own file formats as well as how they can be exported.
 """
 
 import argparse
+import logging
 import os
 import sys
 
@@ -34,9 +35,20 @@ def _parse_args():
     parser.add_argument("--rename", dest="rename", action="store_true", default=False, help="Rename file.pdf to file.old.pdf [default %(default)s].")
     parser.add_argument("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %(default)s]")
     parser.add_argument("--time", dest="time", action="store_true", default=False, help="Check that export is newer than other file. [default %(default)s]")
-    parser.add_argument("-v", dest="verbose", action="store_true", default=False, help="Show renames (or would be renames). [default %(default)s].")
+    parser.add_argument("-v", dest='verbose', action="count", help='Enable verbose output. Can be supplied multiple times for even more verbosity.')
 
-    return parser.parse_args()
+    options = parser.parse_args()
+
+    # Try to set the logging level in case the logging module is imported.
+    try:
+        if options.verbose == 1:
+            logging.basicConfig(level=logging.INFO)
+        elif options.verbose == 2:
+            logging.basicConfig(level=logging.DEBUG)
+    except NameError as e:
+        pass
+
+    return options
 
 def main():
     options = _parse_args()
