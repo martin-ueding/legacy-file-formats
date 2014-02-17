@@ -38,7 +38,6 @@ def _parse_args():
 
     return parser.parse_args()
 
-
 def main():
     options = _parse_args()
 
@@ -62,7 +61,6 @@ def main():
     # Print the summary if desired.
     if options.stat:
         liblegacy.print_summary(counts)
-
 
 if __name__ == "__main__":
 	main()
