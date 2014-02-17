@@ -36,8 +36,6 @@ def get_patterns():
         print("See `man legacy` for more information")
         sys.exit(1)
 
-    
-
     if os.path.isfile(filename_user):
         f = file(filename_user)
     else:
