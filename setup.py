@@ -14,7 +14,7 @@ setup(
     packages = find_packages(),
     entry_points = {
         'console_scripts': [
-            'legacy-file-formats = legacyfileformats:main',
+            'legacy-file-formats = legacyfileformats.__init__:main',
         ],
     },
     install_requires=[

@@ -16,7 +16,7 @@ import argparse
 import os
 import sys
 
-from legacylib import liblegacy
+from . import liblegacy
 
 __docformat__ = "restructuredtext en"
 
