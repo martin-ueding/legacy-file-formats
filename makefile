@@ -1,4 +1,4 @@
-# Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2014 Martin Ueding <dev@martin-ueding.de>
 
 pythonfiles:=$(wildcard *.py */*.py)
 
@@ -7,7 +7,7 @@ pythonfiles:=$(wildcard *.py */*.py)
 ###############################################################################
 
 all: legacy.1
-	make -C export
+	cd export && $(MAKE)
 
 .PHONY: clean
 clean:
@@ -17,7 +17,7 @@ clean:
 	$(RM) -r html
 	$(RM) legacy.1
 	$(RM) legacyc
-	make -C export clean
+	cd export && $(MAKE) clean
 
 html: html/index.html
 

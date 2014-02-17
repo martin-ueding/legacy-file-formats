@@ -1,8 +1,8 @@
-# Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2014 Martin Ueding <dev@martin-ueding.de>
 
 all:
-	make -C xoj2pdf
+	cd xoj2pdf && $(MAKE)
 
 .PHONY: clean
 clean:
-	make -C xoj2pdf clean
+	cd xoj2pdf && $(MAKE) clean
