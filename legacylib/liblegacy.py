@@ -13,7 +13,7 @@ from prettytable import PrettyTable
 import os
 import subprocess
 
-import file_formats
+from . import file_formats
 
 __docformat__ = "restructuredtext en"
 
@@ -115,9 +115,9 @@ def get_makefile_path(result=[]):
         elif os.path.isfile(pattern_makefile):
             result.append(pattern_makefile)
         else:
-            print "There is no pattern makefile. Please create at either location:"
-            print pattern_makefile
-            print pattern_makefile_user
+            print("There is no pattern makefile. Please create at either location:")
+            print(pattern_makefile)
+            print(pattern_makefile_user)
             sys.exit(1)
 
     return result[0]
@@ -137,7 +137,7 @@ def make_export(exportfile, options):
     make_command = ["make", "-f", pattern_makefile, "-C", os.path.dirname(exportfile), os.path.basename(exportfile)]
 
     if options.verbose:
-        print ' '.join(make_command)
+        print(' '.join(make_command))
 
     try:
         output = subprocess.check_output(make_command, stderr=subprocess.STDOUT)
@@ -145,7 +145,7 @@ def make_export(exportfile, options):
         return False
     else:
         if options.verbose:
-            print output
+            print(output)
 
         return True
 
@@ -189,11 +189,11 @@ def _check_rename(dirname, name, exportfile, exportsuffix, options):
             if options.rename:
                 os.rename(alt_exportfile, exportfile)
                 if options.verbose:
-                    print "Renaming", alt_exportfile, exportfile
+                    print("Renaming", alt_exportfile, exportfile)
 
             else:
                 if options.verbose:
-                    print "Would rename", alt_exportfile, exportfile
+                    print("Would rename", alt_exportfile, exportfile)
 
 
 def _mark_invalid(dirname, name, pattern, counts):
@@ -205,7 +205,7 @@ def _mark_invalid(dirname, name, pattern, counts):
     :param pattern: Suffix of the original file.
     :param counts: Dict with suffix counts.
     """
-    print os.path.normpath(dirname+"/"+name)
+    print(os.path.normpath(dirname+"/"+name))
 
     if not pattern in counts:
         counts[pattern] = 0
@@ -222,13 +222,13 @@ def print_summary(counts):
     if len(counts) == 0:
         return
 
-    print
+    print()
 
     t = PrettyTable(["Count", "Suffix", "Name"])
     t.align["Count"] = 'r'
     for row in [[counts[key], key, _patterns[key]["name"]] for key in sorted(counts)]:
         t.add_row(row)
-    print t
+    print(t)
 
 
 def show_formats():

@@ -31,9 +31,9 @@ def get_patterns():
     filename = "/etc/legacy/formats.yaml"
     filename_user = os.path.expanduser("~/.config/legacy/formats.yaml")
     if not any(map(os.path.isfile, [filename, filename_user])):
-        print "Could not find the configuration file."
-        print "Please create a YAML file",filename_user
-        print "See `man legacy` for more information"
+        print("Could not find the configuration file.")
+        print("Please create a YAML file",filename_user)
+        print("See `man legacy` for more information")
         sys.exit(1)
 
     
