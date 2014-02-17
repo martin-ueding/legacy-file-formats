@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2014 Martin Ueding <dev@martin-ueding.de>

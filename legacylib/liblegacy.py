@@ -1,7 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2014 Martin Ueding <dev@martin-ueding.de>
 
 """
 Library for the legacy script.
@@ -9,8 +9,8 @@ Library for the legacy script.
 Contains functions to check folders, rename found files.
 """
 
-from prettytable import PrettyTable
 import os
+import prettytable
 import subprocess
 
 from . import file_formats
@@ -224,7 +224,7 @@ def print_summary(counts):
 
     print()
 
-    t = PrettyTable(["Count", "Suffix", "Name"])
+    t = prettytable.PrettyTable(["Count", "Suffix", "Name"])
     t.align["Count"] = 'r'
     for row in [[counts[key], key, _patterns[key]["name"]] for key in sorted(counts)]:
         t.add_row(row)
@@ -235,7 +235,7 @@ def show_formats():
     """
     Prints a table of all supported formats.
     """
-    table = PrettyTable(["Suffix", "Name", "Category", "Export Suffixes"])
+    table = prettytable.PrettyTable(["Suffix", "Name", "Category", "Export Suffixes"])
     table.align = 'l'
     for pattern in sorted(_patterns):
         cur_pattern = _patterns[pattern]
