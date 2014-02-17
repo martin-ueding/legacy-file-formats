@@ -12,7 +12,7 @@ For some file types, it can automatically generate an export file. You can
 specify your own file formats as well as how they can be exported.
 """
 
-import optparse
+import argparse
 import os
 import sys
 
@@ -27,19 +27,20 @@ def _parse_args():
     :return: Tuple with options and arguments.
     :rtype: tuple
     """
-    parser = optparse.OptionParser(usage="%prog [paths...]", description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")
-    parser.add_option("--formats", dest="formats", action="store_true", default=False, help="Show known formats and exit.")
-    parser.add_option("--make", dest="make", action="store_true", default=False, help="Uses makefile to generate export files.")
-    parser.add_option("--rename", dest="rename", action="store_true", default=False, help="Rename file.pdf to file.old.pdf [default %default].")
-    parser.add_option("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %default]")
-    parser.add_option("--time", dest="time", action="store_true", default=False, help="Check that export is newer than other file. [default %default]")
-    parser.add_option("-v", dest="verbose", action="store_true", default=False, help="Show renames (or would be renames). [default %default].")
+    parser = argparse.ArgumentParser(description="Checks for proprietary, rare or legacy file formats that do not have a PDF (or similarly standard) exported.")
+    parser.add_argument("paths", nargs='*', help="Show known formats and exit.")
+    parser.add_argument("--formats", dest="formats", action="store_true", default=False, help="Show known formats and exit.")
+    parser.add_argument("--make", dest="make", action="store_true", default=False, help="Uses makefile to generate export files.")
+    parser.add_argument("--rename", dest="rename", action="store_true", default=False, help="Rename file.pdf to file.old.pdf [default %(default)s].")
+    parser.add_argument("--stat", dest="stat", action="store_true", default=False, help="Print file type summary. [default %(default)s]")
+    parser.add_argument("--time", dest="time", action="store_true", default=False, help="Check that export is newer than other file. [default %(default)s]")
+    parser.add_argument("-v", dest="verbose", action="store_true", default=False, help="Show renames (or would be renames). [default %(default)s].")
 
     return parser.parse_args()
 
 
 def main():
-    (options, args) = _parse_args()
+    options = _parse_args()
 
     if options.formats:
         liblegacy.show_formats()
@@ -47,15 +48,15 @@ def main():
 
     # If no directory was given on the command line, use the current working
     # directory.
-    if len(args) == 0:
-        args.append(".")
+    if len(options.paths) == 0:
+        options.paths.append(".")
 
     counts = {}
 
     # Iterate through all given folders.
-    for arg in args:
-        if os.path.isdir(arg):
-            for dirpath, dirnames, filenames in os.walk(arg):
+    for path in options.paths:
+        if os.path.isdir(path):
+            for dirpath, dirnames, filenames in os.walk(path):
                 liblegacy.checkfolder(dirpath, filenames + dirnames, options, counts)
 
     # Print the summary if desired.
