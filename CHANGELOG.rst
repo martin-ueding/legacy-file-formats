@@ -1,8 +1,12 @@
-.. Copyright © 2013 Martin Ueding <dev@martin-ueding.de>
+.. Copyright © 2013-2014 Martin Ueding <dev@martin-ueding.de>
 
 #########
 Changelog
 #########
+
+v1.6.8
+    - Add quotes around patterns. This should fix patterns which failed because
+      of spaces.
 
 v1.6.7
     - Fix the ``--formats`` command.
