@@ -85,7 +85,7 @@ def _check_file(name, options, counts, dirname, pattern):
                     is_invalid = False
 
             if is_invalid and options.make:
-                make_export(exportfile, options)
+                make_export(exportfile)
 
                 # Check whether the file was successfully created now.
                 if os.path.isfile(exportfile) and _check_time(dirname+"/"+name, exportfile):
@@ -138,12 +138,11 @@ def make_export(exportfile):
     logging.info(' '.join(make_command))
 
     try:
-        output = subprocess.check_output(make_command, stderr=subprocess.STDOUT)
+        output = subprocess.check_call(make_command, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
         return False
     else:
         logging.info(output)
-
         return True
 
 
