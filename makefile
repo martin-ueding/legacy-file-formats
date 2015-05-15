@@ -39,7 +39,7 @@ install:
 	install "export/xcf2png" "$(DESTDIR)/usr/bin/"
 	install "export/xoj2pdf/xoj2pdf" "$(DESTDIR)/usr/bin/"
 #
-	python setup.py install $(SETUPOPTIONS)
+	python3 setup.py install $(SETUPOPTIONS)
 
 uninstall:
 	$(RM) "$(DESTDIR)/usr/bin/nb2pdf"
