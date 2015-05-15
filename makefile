@@ -1,6 +1,8 @@
-# Copyright © 2012-2014 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2015 Martin Ueding <dev@martin-ueding.de>
 
 pythonfiles:=$(wildcard *.py */*.py)
+
+SETUPOPTIONS = --install-layout=deb --prefix "$(DESTDIR)/usr/"
 
 ###############################################################################
 #                               Public Targets                                #
@@ -37,7 +39,7 @@ install:
 	install "export/xcf2png" "$(DESTDIR)/usr/bin/"
 	install "export/xoj2pdf/xoj2pdf" "$(DESTDIR)/usr/bin/"
 #
-	python setup.py install --install-layout=deb --prefix "$(DESTDIR)/usr/"
+	python setup.py install $(SETUPOPTIONS)
 
 uninstall:
 	$(RM) "$(DESTDIR)/usr/bin/nb2pdf"
