@@ -1,8 +1,14 @@
-.. Copyright © 2013-2014 Martin Ueding <dev@martin-ueding.de>
+.. Copyright © 2013-2015 Martin Ueding <dev@martin-ueding.de>
 
 #########
 Changelog
 #########
+
+v1.6.9
+    Released: 2015-05-15
+
+    - Add ``SETUPOPTIONS`` for ``makefile`` to change the options passed to
+      ``setup.py``.
 
 v1.6.8
     - Add quotes around patterns. This should fix patterns which failed because
