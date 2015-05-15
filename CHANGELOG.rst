@@ -4,6 +4,11 @@
 Changelog
 #########
 
+v1.6.10
+    Released: 2015-05-15
+
+    - Call ``setup.py`` with ``python3``
+
 v1.6.9
     Released: 2015-05-15
 
