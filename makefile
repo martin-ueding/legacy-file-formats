@@ -2,7 +2,7 @@
 
 pythonfiles:=$(wildcard *.py */*.py)
 
-SETUPOPTIONS = --install-layout=deb --prefix "$(DESTDIR)/usr/"
+SETUPOPTIONS = --root "$(DESTDIR)" --prefix=/usr
 
 ###############################################################################
 #                               Public Targets                                #
