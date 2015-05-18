@@ -4,6 +4,11 @@
 Changelog
 #########
 
+v1.6.11
+    Released: 2015-05-18
+
+    - Change the default installation options for the Python module.
+
 v1.6.10
     Released: 2015-05-15
 
