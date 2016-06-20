@@ -1,4 +1,4 @@
-# Copyright © 2012-2014 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2014, 2016 Martin Ueding <dev@martin-ueding.de>
 
 ###############################################################################
 #                              Office Documents                               #
@@ -60,4 +60,4 @@
 ###############################################################################
 
 %.xoj.pdf: %.xoj
-	xoj2pdf "$^"
+	~/Projekte/xournal/src/xournal "$^" --export "$@"
