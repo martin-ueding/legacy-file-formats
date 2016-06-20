@@ -59,5 +59,7 @@
 #                              Xournal Notebook                               #
 ###############################################################################
 
+# TODO Add some error handling if the version does not support the `--export`
+# option.
 %.xoj.pdf: %.xoj
 	~/Projekte/xournal/src/xournal "$^" --export "$@"
