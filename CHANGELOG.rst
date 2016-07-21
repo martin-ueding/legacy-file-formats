@@ -8,6 +8,7 @@ v1.6.12
     Released: 2016-07-21 14:34:01 +0200
 
     - Update path for Mathematica in script.
+    - Use my improved Xournal feature.
 
 v1.6.11
     Released: 2015-05-18
