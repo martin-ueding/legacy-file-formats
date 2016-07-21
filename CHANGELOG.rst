@@ -4,6 +4,11 @@
 Changelog
 #########
 
+v1.6.13
+    Released: 2016-07-21 14:47:27 +0200
+
+    - Remove ``termcolor`` from the ``setup.py``.
+
 v1.6.12
     Released: 2016-07-21 14:34:01 +0200
 

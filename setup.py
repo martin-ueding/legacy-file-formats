@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Copyright © 2012-2014 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2014, 2016 Martin Ueding <dev@martin-ueding.de>
 
 from setuptools import setup, find_packages
 
@@ -19,7 +19,6 @@ setup(
     },
     install_requires=[
         'prettytable',
-        'termcolor',
     ],
     url = "https://github.com/martin-ueding/legacy-file-formats",
     version = "1.6.1",
