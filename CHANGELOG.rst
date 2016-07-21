@@ -1,8 +1,13 @@
-.. Copyright © 2013-2015 Martin Ueding <dev@martin-ueding.de>
+.. Copyright © 2013-2016 Martin Ueding <dev@martin-ueding.de>
 
 #########
 Changelog
 #########
+
+v1.6.12
+    Released: 2016-07-21 14:34:01 +0200
+
+    - Update path for Mathematica in script.
 
 v1.6.11
     Released: 2015-05-18
