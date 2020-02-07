@@ -1,4 +1,4 @@
-# Copyright © 2012-2014 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2014 Martin Ueding <martin-ueding.de>
 
 all:
 	cd xoj2pdf && $(MAKE)

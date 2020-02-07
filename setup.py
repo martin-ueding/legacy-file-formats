@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Copyright © 2012-2014, 2016 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2014, 2016 Martin Ueding <martin-ueding.de>
 
 from setuptools import setup, find_packages
 
 setup(
     author = "Martin Ueding",
-    author_email = "dev@martin-ueding.de",
     description = "Finds file formats that might become unreadable.",
     license = "GPL3",
     name = "legacyfileformats",

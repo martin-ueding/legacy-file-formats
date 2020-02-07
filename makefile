@@ -1,4 +1,4 @@
-# Copyright © 2012-2015 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2012-2015 Martin Ueding <martin-ueding.de>
 
 pythonfiles:=$(wildcard *.py */*.py)
 

@@ -1,4 +1,4 @@
-// Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
+// Copyright © 2012-2013 Martin Ueding <martin-ueding.de>
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -10,7 +10,7 @@ import java.io.IOException;
  *
  * See README.markdown in this folder for more information.
  *
- * @author Martin Ueding <dev@martin-ueding.de>
+ * @author Martin Ueding <martin-ueding.de>
  */
 public class XournalToPDF {
 	/**

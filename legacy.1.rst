@@ -6,7 +6,7 @@ legacy
 finds files which might become unreadable
 *****************************************
 
-:Author: Martin Ueding <dev@martin-ueding.de>
+:Author: Martin Ueding <martin-ueding.de>
 :Date: 2012-02-27
 :Manual section: 1
 
@@ -121,7 +121,8 @@ The file formats file is in the YAML format.
 
 BUGS
 ====
-Please report bugs in English or German to Martin Ueding dev@martin-ueding.de.
+
+Please report bugs in English or German to Martin Ueding (martin-ueding.de).
 
 
 EXAMPLE
